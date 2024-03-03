@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.PreparedStatementCreator;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Types;
 
 import static com.redshiftsoft.tesla.dao.DAOTools.string;
 
@@ -14,7 +15,10 @@ public class SiteUpdateStatementCreator implements PreparedStatementCreator {
     private static final String SQL = "update site " +
             "set location_id=?,name=?,status=?::SITE_STATUS_TYPE,opened_date=?,hours=?,enabled=?,counted=?," +
             "gps_latitude=?,gps_longitude=?,elevation_meters=?,url_discuss=?,stall_count=?,power_kwatt=?," +
-            "has_solar_canopy=?,has_battery=?,developer_notes=?,modified_date=now(),version=version+1,other_evs=?" +
+            "has_solar_canopy=?,has_battery=?,developer_notes=?,modified_date=now(),version=version+1,other_evs=?," +
+            "stalls_urban=?,stalls_v2=?,stalls_v3=?,stalls_v4=?,stalls_trailer=?," +
+            "plugs_tesla_us=?,plugs_type2=?,plugs_type2_ccs2=?,plugs_ccs2=?,plugs_gbt_china=?,plugs_nacs=?," +
+            "paid_parking=?,facility_name=?,facility_hours=?,access_notes=?,address_notes=?,plugshare_id=?,osm_id=?" +
             " where site_id=?";
 
     private final Site site;
@@ -54,6 +58,28 @@ public class SiteUpdateStatementCreator implements PreparedStatementCreator {
         stat.setString(c++, string(site.getDeveloperNotes()));
         stat.setBoolean(c++, site.isOtherEVs());
 
+        // use setObject() instead of type-specific setX() for better null handling
+        stat.setObject(c++, site.getStallsUrban(), Types.INTEGER);
+        stat.setObject(c++, site.getStallsV2(), Types.INTEGER);
+        stat.setObject(c++, site.getStallsV3(), Types.INTEGER);
+        stat.setObject(c++, site.getStallsV4(), Types.INTEGER);
+        stat.setObject(c++, site.getStallsTrailerFriendly(), Types.INTEGER);
+
+        stat.setObject(c++, site.getPlugsTeslaUS(), Types.INTEGER);
+        stat.setObject(c++, site.getPlugsType2(), Types.INTEGER);
+        stat.setObject(c++, site.getPlugsType2CCS2(), Types.INTEGER);
+        stat.setObject(c++, site.getPlugsCCS2(), Types.INTEGER);
+        stat.setObject(c++, site.getPlugsGBTChina(), Types.INTEGER);
+        stat.setObject(c++, site.getPlugsNACS(), Types.INTEGER);
+
+        stat.setObject(c++, site.isPaidParking(), Types.BOOLEAN);
+        stat.setString(c++, string(site.getFacilityName()));
+        stat.setString(c++, string(site.getFacilityHours()));
+        stat.setString(c++, string(site.getAccessNotes()));
+        stat.setString(c++, string(site.getAddressNotes()));
+        stat.setObject(c++, site.getPlugshareId(), Types.BIGINT);
+        stat.setObject(c++, site.getOsmId(), Types.BIGINT);
+        
         stat.setInt(c, site.getId());
 
         return stat;

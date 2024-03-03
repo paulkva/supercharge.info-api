@@ -17,14 +17,14 @@ public class Validations {
                 new Validation(SUPERCHARGER, "open date consistent with status", "" +
                         "SELECT * " +
                         "FROM site " +
-                        "WHERE (status = 'OPEN' AND opened_date IS NULL) OR (status != 'OPEN' AND opened_date IS NOT NULL)")
+                        "WHERE (status IN ('OPEN', 'EXPANDING') AND opened_date IS NULL) OR (status NOT IN ('OPEN', 'EXPANDING') AND opened_date IS NOT NULL)")
         );
 
         validationMap.add(
                 new Validation(SUPERCHARGER, "Tesla location id is not null for OPEN site", "" +
                         "SELECT * " +
                         "FROM site " +
-                        "WHERE status = 'OPEN' AND location_id IS NULL")
+                        "WHERE status IN ('OPEN', 'EXPANDING') AND location_id IS NULL")
         );
 
         validationMap.add(
@@ -34,10 +34,10 @@ public class Validations {
         );
 
         validationMap.add(
-                new Validation(SUPERCHARGER, "stall count non zero for OPEN sites", "" +
+                new Validation(SUPERCHARGER, "stall count non zero for OPEN/EXPANDING sites", "" +
                         "SELECT * " +
                         "FROM site " +
-                        "WHERE status = 'OPEN' AND (stall_count IS NULL OR stall_count = 0)")
+                        "WHERE status IN ('OPEN', 'EXPANDING') AND (stall_count IS NULL OR stall_count = 0)")
         );
 
         validationMap.add(
@@ -45,6 +45,15 @@ public class Validations {
                         "SELECT name, count(*) " +
                         "FROM site " +
                         "GROUP BY name HAVING count(*) > 1")
+        );
+
+        validationMap.add(
+                new Validation(SUPERCHARGER, "individual stall and plug counts do not exceed total", "" +
+                        "SELECT * " +
+                        "FROM site " +
+                        "WHERE COALESCE(stall_count, 0) < COALESCE(stalls_urban, 0) + COALESCE(stalls_v2, 0) + COALESCE(stalls_v3, 0) + COALESCE(stalls_v4, 0) " +
+                        "OR COALESCE(stall_count, 0) < COALESCE(plugs_tesla_us, 0) + COALESCE(plugs_type2, 0) + COALESCE(plugs_type2_ccs2, 0) + COALESCE(plugs_ccs2, 0) + COALESCE(plugs_gbt_china, 0) + COALESCE(plugs_nacs, 0) " +
+                        "OR COALESCE(stall_count, 0) < COALESCE(stalls_trailer_friendly, 0)")
         );
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - | ADDRESS

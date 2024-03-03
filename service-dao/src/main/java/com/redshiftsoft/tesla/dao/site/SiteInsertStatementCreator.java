@@ -2,16 +2,18 @@ package com.redshiftsoft.tesla.dao.site;
 
 import com.redshiftsoft.tesla.dao.LocalDateUtil;
 import org.springframework.jdbc.core.PreparedStatementCreator;
+import org.springframework.jdbc.core.SqlTypeValue;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Types;
 
 import static com.redshiftsoft.tesla.dao.DAOTools.string;
 
 public class SiteInsertStatementCreator implements PreparedStatementCreator {
 
-    private static final String SQL = "insert into site values (DEFAULT,?,?,?::SITE_STATUS_TYPE,?,?,?,?,?,?,?,?,?,?,?,?,?,?,NOW(),?,?)";
+    private static final String SQL = "insert into site values (DEFAULT,?,?,?::SITE_STATUS_TYPE,?,?,?,?,?,?,?,?,?,?,?,?,?,?,NOW(),?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     private final Site site;
 
     public SiteInsertStatementCreator(Site site) {
@@ -50,7 +52,29 @@ public class SiteInsertStatementCreator implements PreparedStatementCreator {
         stat.setBoolean(c++, site.isBattery());
         stat.setString(c++, string(site.getDeveloperNotes()));
         stat.setInt(c++, site.getVersion());
-        stat.setBoolean(c, site.isOtherEVs());
+        stat.setBoolean(c++, site.isOtherEVs());
+
+        // use setObject() instead of type-specific setX() for better null handling
+        stat.setObject(c++, site.getStallsUrban(), Types.INTEGER);
+        stat.setObject(c++, site.getStallsV2(), Types.INTEGER);
+        stat.setObject(c++, site.getStallsV3(), Types.INTEGER);
+        stat.setObject(c++, site.getStallsV4(), Types.INTEGER);
+        stat.setObject(c++, site.getStallsTrailerFriendly(), Types.INTEGER);
+
+        stat.setObject(c++, site.getPlugsTeslaUS(), Types.INTEGER);
+        stat.setObject(c++, site.getPlugsType2(), Types.INTEGER);
+        stat.setObject(c++, site.getPlugsType2CCS2(), Types.INTEGER);
+        stat.setObject(c++, site.getPlugsCCS2(), Types.INTEGER);
+        stat.setObject(c++, site.getPlugsGBTChina(), Types.INTEGER);
+        stat.setObject(c++, site.getPlugsNACS(), Types.INTEGER);
+
+        stat.setObject(c++, site.isPaidParking(), Types.BOOLEAN);
+        stat.setString(c++, string(site.getFacilityName()));
+        stat.setString(c++, string(site.getFacilityHours()));
+        stat.setString(c++, string(site.getAccessNotes()));
+        stat.setString(c++, string(site.getAddressNotes()));
+        stat.setObject(c++, site.getPlugshareId(), Types.BIGINT);
+        stat.setObject(c++, site.getOsmId(), Types.BIGINT);
 
         return stat;
     }

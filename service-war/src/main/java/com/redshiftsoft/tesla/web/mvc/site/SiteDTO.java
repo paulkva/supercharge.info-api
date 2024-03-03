@@ -40,7 +40,7 @@ public class SiteDTO {
     private boolean enabled;
     private Integer elevationMeters;
 
-    //    /* Power in kW */
+    /* Power in kW */
     private int powerKilowatt;
     private boolean solarCanopy;
     private boolean battery;
@@ -51,6 +51,12 @@ public class SiteDTO {
     /* True if there is one, false otherwise */
     private boolean urlDiscuss;
 
+    private Integer stallsUrban, stallsV2, stallsV3, stallsV4, stallsTrailerFriendly;
+    private Integer plugsTeslaUS, plugsType2, plugsType2CCS2, plugsCCS2, plugsGBTChina, plugsNACS;
+
+    private Boolean paidParking;
+    private String facilityName, facilityHours, accessNotes, addressNotes;
+    private Long plugshareId, osmId;
 
     // - - - - - - - - - - - - - - - - - - - - - - -
     // java.lang.Object
@@ -77,7 +83,6 @@ public class SiteDTO {
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
@@ -85,7 +90,6 @@ public class SiteDTO {
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -93,7 +97,6 @@ public class SiteDTO {
     public SiteStatus getStatus() {
         return status;
     }
-
     public void setStatus(SiteStatus status) {
         this.status = status;
     }
@@ -103,7 +106,6 @@ public class SiteDTO {
     public LocalDate getDateOpened() {
         return dateOpened;
     }
-
     public void setDateOpened(LocalDate dateOpened) {
         this.dateOpened = dateOpened;
     }
@@ -111,7 +113,6 @@ public class SiteDTO {
     public AddressDTO getAddress() {
         return address;
     }
-
     public void setAddress(AddressDTO address) {
         this.address = address;
     }
@@ -119,7 +120,6 @@ public class SiteDTO {
     public SiteGPS getGps() {
         return gps;
     }
-
     public void setGps(SiteGPS gps) {
         this.gps = gps;
     }
@@ -127,7 +127,6 @@ public class SiteDTO {
     public Integer getElevationMeters() {
         return elevationMeters;
     }
-
     public void setElevationMeters(Integer elevationMeters) {
         this.elevationMeters = elevationMeters;
     }
@@ -135,7 +134,6 @@ public class SiteDTO {
     public boolean getUrlDiscuss() {
         return urlDiscuss;
     }
-
     public void setUrlDiscuss(boolean urlDiscuss) {
         this.urlDiscuss = urlDiscuss;
     }
@@ -143,7 +141,6 @@ public class SiteDTO {
     public int getStallCount() {
         return stallCount;
     }
-
     public void setStallCount(int stallCount) {
         this.stallCount = stallCount;
     }
@@ -151,7 +148,6 @@ public class SiteDTO {
     public boolean isCounted() {
         return counted;
     }
-
     public void setCounted(boolean counted) {
         this.counted = counted;
     }
@@ -161,7 +157,6 @@ public class SiteDTO {
     public boolean isEnabled() {
         return enabled;
     }
-
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }
@@ -169,7 +164,6 @@ public class SiteDTO {
     public String getHours() {
         return hours;
     }
-
     public void setHours(String hours) {
         this.hours = hours;
     }
@@ -177,7 +171,6 @@ public class SiteDTO {
     public String getLocationId() {
         return locationId;
     }
-
     public void setLocationId(String locationId) {
         this.locationId = locationId;
     }
@@ -185,7 +178,6 @@ public class SiteDTO {
     public int getStatusDays() {
         return statusDays;
     }
-
     public void setStatusDays(int statusDays) {
         this.statusDays = statusDays;
     }
@@ -193,7 +185,6 @@ public class SiteDTO {
     public int getPowerKilowatt() {
         return powerKilowatt;
     }
-
     public void setPowerKilowatt(int powerKilowatt) {
         this.powerKilowatt = powerKilowatt;
     }
@@ -201,7 +192,6 @@ public class SiteDTO {
     public boolean isSolarCanopy() {
         return solarCanopy;
     }
-
     public void setSolarCanopy(boolean solarCanopy) {
         this.solarCanopy = solarCanopy;
     }
@@ -209,7 +199,6 @@ public class SiteDTO {
     public boolean isBattery() {
         return battery;
     }
-
     public void setBattery(boolean battery) {
         this.battery = battery;
     }
@@ -217,8 +206,133 @@ public class SiteDTO {
     public boolean isOtherEVs() {
         return otherEVs;
     }
-
     public void setOtherEVs(boolean otherEVs) {
         this.otherEVs = otherEVs;
+    }
+
+    public Integer getStallsUrban() {
+        return stallsUrban;
+    }
+    public void setStallsUrban(Integer stallsUrban) {
+        this.stallsUrban = stallsUrban;
+    }
+
+    public Integer getStallsV2() {
+        return stallsV2;
+    }
+    public void setStallsV2(Integer stallsV2) {
+        this.stallsV2 = stallsV2;
+    }
+
+    public Integer getStallsV3() {
+        return stallsV3;
+    }
+    public void setStallsV3(Integer stallsV3) {
+        this.stallsV3 = stallsV3;
+    }
+
+    public Integer getStallsV4() {
+        return stallsV4;
+    }
+    public void setStallsV4(Integer stallsV4) {
+        this.stallsV4 = stallsV4;
+    }
+
+    public Integer getStallsTrailerFriendly() {
+        return stallsTrailerFriendly;
+    }
+    public void setStallsTrailerFriendly(Integer stallsTrailerFriendly) {
+        this.stallsTrailerFriendly = stallsTrailerFriendly;
+    }
+
+    public Integer getPlugsTeslaUS() {
+        return plugsTeslaUS;
+    }
+    public void setPlugsTeslaUS(Integer plugsTeslaUS) {
+        this.plugsTeslaUS = plugsTeslaUS;
+    }
+
+    public Integer getPlugsType2() {
+        return plugsType2;
+    }
+    public void setPlugsType2(Integer plugsType2) {
+        this.plugsType2 = plugsType2;
+    }
+
+    public Integer getPlugsType2CCS2() {
+        return plugsType2CCS2;
+    }
+    public void setPlugsType2CCS2(Integer plugsType2CCS2) {
+        this.plugsType2CCS2 = plugsType2CCS2;
+    }
+
+    public Integer getPlugsCCS2() {
+        return plugsCCS2;
+    }
+    public void setPlugsCCS2(Integer plugsCCS2) {
+        this.plugsCCS2 = plugsCCS2;
+    }
+
+    public Integer getPlugsGBTChina() {
+        return plugsGBTChina;
+    }
+    public void setPlugsGBTChina(Integer plugsGBTChina) {
+        this.plugsGBTChina = plugsGBTChina;
+    }
+
+    public Integer getPlugsNACS() {
+        return plugsNACS;
+    }
+    public void setPlugsNACS(Integer plugsNACS) {
+        this.plugsNACS = plugsNACS;
+    }
+
+    public Boolean isPaidParking() {
+        return paidParking;
+    }
+    public void setPaidParking(Boolean paidParking) {
+        this.paidParking = paidParking;
+    }
+
+    public String getFacilityName() {
+        return facilityName;
+    }
+    public void setFacilityName(String facilityName) {
+        this.facilityName = facilityName;
+    }
+
+    public String getFacilityHours() {
+        return facilityHours;
+    }
+    public void setFacilityHours(String facilityHours) {
+        this.facilityHours = facilityHours;
+    }
+
+    public String getAccessNotes() {
+        return accessNotes;
+    }
+    public void setAccessNotes(String accessNotes) {
+        this.accessNotes = accessNotes;
+    }
+
+    public String getAddressNotes() {
+        return addressNotes;
+    }
+    public void setAddressNotes(String addressNotes) {
+        this.addressNotes = addressNotes;
+    }
+
+    public Long getPlugshareId() {
+        return plugshareId;
+    }
+    public void setPlugshareId(Long plugshareId) {
+        this.plugshareId = plugshareId;
+    }
+
+    public Long getOsmId() {
+        return osmId;
+    }
+    public void setOsmId(Long osmId) {
+        this.osmId = osmId;
     }
 }

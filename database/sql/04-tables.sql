@@ -78,7 +78,7 @@ alter sequence address_address_id_seq restart with 2000000;
 -- -----------------------------------------------------------
 -- SITE
 -- -----------------------------------------------------------
-create type site_status_type as enum ('CLOSED_PERM','CLOSED_TEMP', 'PERMIT', 'CONSTRUCTION', 'OPEN');
+create type site_status_type as enum ('CLOSED_PERM','CLOSED_TEMP', 'PERMIT', 'CONSTRUCTION', 'OPEN', 'VOTING', 'PLAN', 'EXPANDING');
 
 create table site
 (
@@ -102,7 +102,25 @@ create table site
     developer_notes  varchar(1000)                  null     default null::character varying,
     modified_date    timestamptz                    not null default now(),
     "version"        int4                           not null default 1,
-    other_evs        bool                           not null default false,
+    other_evs        bool                           not null default false, -- TO BE DEPRECATED
+    stalls_urban     int4                           null,
+    stalls_v2        int4                           null,
+    stalls_v3        int4                           null,
+    stalls_v4        int4                           null,
+    stalls_trailer   int4                           null,
+    plugs_tesla_us   int4                           null,
+    plugs_type2      int4                           null,
+    plugs_type2_ccs2 int4                           null,
+    plugs_ccs2       int4                           null,
+    plugs_gbt_china  int4                           null,
+    plugs_nacs       int4                           null,
+    paid_parking     bool                           null,
+    facility_name    varchar(200)                   null     default null::character varying,
+    facility_hours   varchar(100)                   null     default null::character varying,
+    access_notes     varchar(1000)                  null     default null::character varying,
+    address_notes    varchar(1000)                  null     default null::character varying,
+    plugshare_id     int8                           null,
+    osm_id           int8                           null,
     constraint address_id_unique unique (address_id),
     constraint name_unique unique (name),
     constraint site_id_unique primary key (site_id)

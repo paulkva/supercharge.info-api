@@ -52,6 +52,28 @@ public class SiteRowMapper implements RowMapper<Site> {
         site.setVersion(rs.getInt(c++));
         site.setOtherEVs(rs.getBoolean(c++));
 
+        // Used typed getObject() instead of specific getX() for better null handling
+        site.setStallsUrban(rs.getObject(c++, Integer.class));
+        site.setStallsV2(rs.getObject(c++, Integer.class));
+        site.setStallsV3(rs.getObject(c++, Integer.class));
+        site.setStallsV4(rs.getObject(c++, Integer.class));
+        site.setStallsTrailerFriendly(rs.getObject(c++, Integer.class));
+
+        site.setPlugsTeslaUS(rs.getObject(c++, Integer.class));
+        site.setPlugsType2(rs.getObject(c++, Integer.class));
+        site.setPlugsType2CCS2(rs.getObject(c++, Integer.class));
+        site.setPlugsCCS2(rs.getObject(c++, Integer.class));
+        site.setPlugsGBTChina(rs.getObject(c++, Integer.class));
+        site.setPlugsNACS(rs.getObject(c++, Integer.class));
+
+        site.setPaidParking(rs.getObject(c++, Boolean.class));
+        site.setFacilityName(rs.getString(c++));
+        site.setFacilityHours(rs.getString(c++));
+        site.setAccessNotes(rs.getString(c++));
+        site.setAddressNotes(rs.getString(c++));
+        site.setPlugshareId(rs.getObject(c++, Long.class));
+        site.setOsmId(rs.getObject(c++, Long.class));
+
         site.setAddress(new AddressRowMapper(c).mapRow(rs, rowNum));
 
         return site;
