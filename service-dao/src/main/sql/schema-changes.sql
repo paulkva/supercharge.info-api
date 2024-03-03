@@ -24,3 +24,4 @@ alter table site
     add column address_notes    varchar(1000)                  null     default null::character varying,
     add column plugshare_id     int8                           null,
     add column osm_id           int8                           null;
+    

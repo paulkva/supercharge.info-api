@@ -52,6 +52,8 @@ public class SiteRowMapper implements RowMapper<Site> {
         site.setVersion(rs.getInt(c++));
         site.setOtherEVs(rs.getBoolean(c++));
 
+        site.setAddress(new AddressRowMapper(c++).mapRow(rs, rowNum));
+
         // Used typed getObject() instead of specific getX() for better null handling
         site.setStallsUrban(rs.getObject(c++, Integer.class));
         site.setStallsV2(rs.getObject(c++, Integer.class));
@@ -73,8 +75,6 @@ public class SiteRowMapper implements RowMapper<Site> {
         site.setAddressNotes(rs.getString(c++));
         site.setPlugshareId(rs.getObject(c++, Long.class));
         site.setOsmId(rs.getObject(c++, Long.class));
-
-        site.setAddress(new AddressRowMapper(c).mapRow(rs, rowNum));
 
         return site;
     }
