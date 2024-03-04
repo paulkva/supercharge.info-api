@@ -2,6 +2,10 @@ package com.redshiftsoft.tesla.web.mvc.siteadmin;
 
 import com.redshiftsoft.tesla.dao.site.Site;
 import com.redshiftsoft.tesla.web.mvc.site.AddressDTOFunctions;
+import com.redshiftsoft.tesla.web.mvc.site.PlugsDTO;
+import com.redshiftsoft.tesla.web.mvc.site.PlugsDTOFunctions;
+import com.redshiftsoft.tesla.web.mvc.site.SiteDTOFunction;
+import com.redshiftsoft.tesla.web.mvc.site.StallsDTOFunctions;
 
 import java.util.Collection;
 import java.util.List;
@@ -56,17 +60,8 @@ public final class SiteEditDTOFunctions {
             siteDTO.setSolarCanopy(site.isSolarCanopy());
             siteDTO.setBattery(site.isBattery());
             siteDTO.setOtherEVs(site.isOtherEVs());
-            siteDTO.setStallsUrban(site.getStallsUrban());
-            siteDTO.setStallsV2(site.getStallsV2());
-            siteDTO.setStallsV3(site.getStallsV3());
-            siteDTO.setStallsV4(site.getStallsV4());
-            siteDTO.setStallsTrailerFriendly(site.getStallsTrailerFriendly());
-            siteDTO.setPlugsTeslaUS(site.getPlugsTeslaUS());
-            siteDTO.setPlugsType2(site.getPlugsType2());
-            siteDTO.setPlugsType2CCS2(site.getPlugsType2CCS2());
-            siteDTO.setPlugsCCS2(site.getPlugsCCS2());
-            siteDTO.setPlugsGBTChina(site.getPlugsGBTChina());
-            siteDTO.setPlugsNACS(site.getPlugsNACS());
+            siteDTO.setStalls(StallsDTOFunctions.transform(site.getStalls()));
+            siteDTO.setPlugs(PlugsDTOFunctions.transform(site.getPlugs()));
             siteDTO.setPaidParking(site.isPaidParking());
             siteDTO.setFacilityName(site.getFacilityName());
             siteDTO.setFacilityHours(site.getFacilityHours());
@@ -107,6 +102,15 @@ public final class SiteEditDTOFunctions {
             site.setSolarCanopy(siteDTO.isSolarCanopy());
             site.setBattery(siteDTO.isBattery());
             site.setOtherEVs(siteDTO.isOtherEVs());
+            site.setStalls(StallsDTOFunctions.transform(siteDTO.getStalls()));
+            site.setPlugs(PlugsDTOFunctions.transform(siteDTO.getPlugs()));
+            site.setPaidParking(siteDTO.isPaidParking());
+            site.setFacilityName(siteDTO.getFacilityName());
+            site.setFacilityHours(siteDTO.getFacilityHours());
+            site.setAccessNotes(siteDTO.getAccessNotes());
+            site.setAddressNotes(siteDTO.getAddressNotes());
+            site.setPlugshareId(siteDTO.getPlugshareId());
+            site.setOsmId(siteDTO.getOsmId());
             site.setDeveloperNotes(siteDTO.getDeveloperNotes());
 
             return site;

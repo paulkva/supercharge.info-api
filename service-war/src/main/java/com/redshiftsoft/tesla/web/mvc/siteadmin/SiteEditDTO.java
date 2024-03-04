@@ -10,6 +10,8 @@ import com.redshiftsoft.tesla.web.json.LocalDateDeserializer;
 import com.redshiftsoft.tesla.web.json.LocalDateSerializer;
 import com.redshiftsoft.tesla.web.json.LocalDateTimeSerializer;
 import com.redshiftsoft.tesla.web.mvc.site.AddressDTO;
+import com.redshiftsoft.tesla.web.mvc.site.PlugsDTO;
+import com.redshiftsoft.tesla.web.mvc.site.StallsDTO;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -46,8 +48,8 @@ public class SiteEditDTO {
     private boolean battery;
     private boolean otherEVs;
 
-    private Integer stallsUrban, stallsV2, stallsV3, stallsV4, stallsTrailerFriendly;
-    private Integer plugsTeslaUS, plugsType2, plugsType2CCS2, plugsCCS2, plugsGBTChina, plugsNACS;
+    private StallsDTO stalls = new StallsDTO();
+    private PlugsDTO plugs = new PlugsDTO();
 
     private Boolean paidParking;
     private String facilityName, facilityHours, accessNotes, addressNotes;
@@ -255,81 +257,18 @@ public class SiteEditDTO {
         this.otherEVs = otherEVs;
     }
 
-    public Integer getStallsUrban() {
-        return stallsUrban;
+    public StallsDTO getStalls() {
+        return stalls;
     }
-    public void setStallsUrban(Integer stallsUrban) {
-        this.stallsUrban = stallsUrban;
-    }
-
-    public Integer getStallsV2() {
-        return stallsV2;
-    }
-    public void setStallsV2(Integer stallsV2) {
-        this.stallsV2 = stallsV2;
+    public void setStalls(StallsDTO stalls) {
+        this.stalls = stalls;
     }
 
-    public Integer getStallsV3() {
-        return stallsV3;
+    public PlugsDTO getPlugs() {
+        return plugs;
     }
-    public void setStallsV3(Integer stallsV3) {
-        this.stallsV3 = stallsV3;
-    }
-
-    public Integer getStallsV4() {
-        return stallsV4;
-    }
-    public void setStallsV4(Integer stallsV4) {
-        this.stallsV4 = stallsV4;
-    }
-
-    public Integer getStallsTrailerFriendly() {
-        return stallsTrailerFriendly;
-    }
-    public void setStallsTrailerFriendly(Integer stallsTrailerFriendly) {
-        this.stallsTrailerFriendly = stallsTrailerFriendly;
-    }
-
-    public Integer getPlugsTeslaUS() {
-        return plugsTeslaUS;
-    }
-    public void setPlugsTeslaUS(Integer plugsTeslaUS) {
-        this.plugsTeslaUS = plugsTeslaUS;
-    }
-
-    public Integer getPlugsType2() {
-        return plugsType2;
-    }
-    public void setPlugsType2(Integer plugsType2) {
-        this.plugsType2 = plugsType2;
-    }
-
-    public Integer getPlugsType2CCS2() {
-        return plugsType2CCS2;
-    }
-    public void setPlugsType2CCS2(Integer plugsType2CCS2) {
-        this.plugsType2CCS2 = plugsType2CCS2;
-    }
-
-    public Integer getPlugsCCS2() {
-        return plugsCCS2;
-    }
-    public void setPlugsCCS2(Integer plugsCCS2) {
-        this.plugsCCS2 = plugsCCS2;
-    }
-
-    public Integer getPlugsGBTChina() {
-        return plugsGBTChina;
-    }
-    public void setPlugsGBTChina(Integer plugsGBTChina) {
-        this.plugsGBTChina = plugsGBTChina;
-    }
-
-    public Integer getPlugsNACS() {
-        return plugsNACS;
-    }
-    public void setPlugsNACS(Integer plugsNACS) {
-        this.plugsNACS = plugsNACS;
+    public void setPlugs(PlugsDTO plugs) {
+        this.plugs = plugs;
     }
 
     public Boolean isPaidParking() {
