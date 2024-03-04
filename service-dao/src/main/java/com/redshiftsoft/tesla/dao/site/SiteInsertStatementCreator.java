@@ -55,18 +55,18 @@ public class SiteInsertStatementCreator implements PreparedStatementCreator {
         stat.setBoolean(c++, site.isOtherEVs());
 
         // use setObject() instead of type-specific setX() for better null handling
-        stat.setObject(c++, site.getStallsUrban(), Types.INTEGER);
-        stat.setObject(c++, site.getStallsV2(), Types.INTEGER);
-        stat.setObject(c++, site.getStallsV3(), Types.INTEGER);
-        stat.setObject(c++, site.getStallsV4(), Types.INTEGER);
-        stat.setObject(c++, site.getStallsTrailerFriendly(), Types.INTEGER);
+        stat.setObject(c++, site.getStalls().getUrban(), Types.INTEGER);
+        stat.setObject(c++, site.getStalls().getV2(), Types.INTEGER);
+        stat.setObject(c++, site.getStalls().getV3(), Types.INTEGER);
+        stat.setObject(c++, site.getStalls().getV4(), Types.INTEGER);
+        stat.setObject(c++, site.getStalls().getTrailerFriendly(), Types.INTEGER);
 
-        stat.setObject(c++, site.getPlugsTeslaUS(), Types.INTEGER);
-        stat.setObject(c++, site.getPlugsType2(), Types.INTEGER);
-        stat.setObject(c++, site.getPlugsType2CCS2(), Types.INTEGER);
-        stat.setObject(c++, site.getPlugsCCS2(), Types.INTEGER);
-        stat.setObject(c++, site.getPlugsGBTChina(), Types.INTEGER);
-        stat.setObject(c++, site.getPlugsNACS(), Types.INTEGER);
+        stat.setObject(c++, site.getPlugs().getTeslaUS(), Types.INTEGER);
+        stat.setObject(c++, site.getPlugs().getType2(), Types.INTEGER);
+        stat.setObject(c++, site.getPlugs().getType2CCS2(), Types.INTEGER);
+        stat.setObject(c++, site.getPlugs().getCCS2(), Types.INTEGER);
+        stat.setObject(c++, site.getPlugs().getGBTChina(), Types.INTEGER);
+        stat.setObject(c++, site.getPlugs().getNACS(), Types.INTEGER);
 
         stat.setObject(c++, site.isPaidParking(), Types.BOOLEAN);
         stat.setString(c++, string(site.getFacilityName()));

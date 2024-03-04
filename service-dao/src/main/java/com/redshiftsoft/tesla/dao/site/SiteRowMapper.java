@@ -52,21 +52,19 @@ public class SiteRowMapper implements RowMapper<Site> {
         site.setVersion(rs.getInt(c++));
         site.setOtherEVs(rs.getBoolean(c++));
 
-        site.setAddress(new AddressRowMapper(c++).mapRow(rs, rowNum));
-
         // Used typed getObject() instead of specific getX() for better null handling
-        site.setStallsUrban(rs.getObject(c++, Integer.class));
-        site.setStallsV2(rs.getObject(c++, Integer.class));
-        site.setStallsV3(rs.getObject(c++, Integer.class));
-        site.setStallsV4(rs.getObject(c++, Integer.class));
-        site.setStallsTrailerFriendly(rs.getObject(c++, Integer.class));
+        site.getStalls().setUrban(rs.getObject(c++, Integer.class));
+        site.getStalls().setV2(rs.getObject(c++, Integer.class));
+        site.getStalls().setV3(rs.getObject(c++, Integer.class));
+        site.getStalls().setV4(rs.getObject(c++, Integer.class));
+        site.getStalls().setTrailerFriendly(rs.getObject(c++, Integer.class));
 
-        site.setPlugsTeslaUS(rs.getObject(c++, Integer.class));
-        site.setPlugsType2(rs.getObject(c++, Integer.class));
-        site.setPlugsType2CCS2(rs.getObject(c++, Integer.class));
-        site.setPlugsCCS2(rs.getObject(c++, Integer.class));
-        site.setPlugsGBTChina(rs.getObject(c++, Integer.class));
-        site.setPlugsNACS(rs.getObject(c++, Integer.class));
+        site.getPlugs().setTeslaUS(rs.getObject(c++, Integer.class));
+        site.getPlugs().setType2(rs.getObject(c++, Integer.class));
+        site.getPlugs().setType2CCS2(rs.getObject(c++, Integer.class));
+        site.getPlugs().setCCS2(rs.getObject(c++, Integer.class));
+        site.getPlugs().setGBTChina(rs.getObject(c++, Integer.class));
+        site.getPlugs().setNACS(rs.getObject(c++, Integer.class));
 
         site.setPaidParking(rs.getObject(c++, Boolean.class));
         site.setFacilityName(rs.getString(c++));
@@ -75,6 +73,8 @@ public class SiteRowMapper implements RowMapper<Site> {
         site.setAddressNotes(rs.getString(c++));
         site.setPlugshareId(rs.getObject(c++, Long.class));
         site.setOsmId(rs.getObject(c++, Long.class));
+
+        site.setAddress(new AddressRowMapper(c).mapRow(rs, rowNum));
 
         return site;
     }

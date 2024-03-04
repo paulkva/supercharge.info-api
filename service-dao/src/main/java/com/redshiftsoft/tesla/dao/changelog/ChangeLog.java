@@ -1,7 +1,9 @@
 package com.redshiftsoft.tesla.dao.changelog;
 
 import com.google.common.base.Preconditions;
+import com.redshiftsoft.tesla.dao.site.Plugs;
 import com.redshiftsoft.tesla.dao.site.SiteStatus;
+import com.redshiftsoft.tesla.dao.site.Stalls;
 
 import java.time.Instant;
 import java.util.Collections;
@@ -44,8 +46,8 @@ public class ChangeLog implements Comparable<ChangeLog> {
     private int powerKilowatt;
     private boolean otherEVs;
 
-    private Integer stallsUrban, stallsV2, stallsV3, stallsV4, stallsTrailerFriendly;
-    private Integer plugsTeslaUS, plugsType2, plugsType2CCS2, plugsCCS2, plugsGBTChina, plugsNACS;
+    private Stalls stalls;
+    private Plugs plugs;
 
     private Boolean paidParking;
     private String facilityName, facilityHours, accessNotes, addressNotes;

@@ -33,17 +33,8 @@ public class Site {
     private boolean battery;
     private boolean otherEVs;
 
-    private Integer stallsUrban;
-    private Integer stallsV2;
-    private Integer stallsV3;
-    private Integer stallsV4;
-    private Integer stallsTrailerFriendly;
-    private Integer plugsTeslaUS;
-    private Integer plugsType2;
-    private Integer plugsType2CCS2;
-    private Integer plugsCCS2;
-    private Integer plugsGBTChina;
-    private Integer plugsNACS;
+    private Stalls stalls = new Stalls();
+    private Plugs plugs = new Plugs();
     private Boolean paidParking;
     private String facilityName;
     private String facilityHours;
@@ -246,81 +237,18 @@ public class Site {
         this.otherEVs = otherEVs;
     }
 
-    public Integer getStallsUrban() {
-        return stallsUrban;
+    public Stalls getStalls() {
+        return stalls;
     }
-    public void setStallsUrban(Integer stallsUrban) {
-        this.stallsUrban = stallsUrban;
-    }
-
-    public Integer getStallsV2() {
-        return stallsV2;
-    }
-    public void setStallsV2(Integer stallsV2) {
-        this.stallsV2 = stallsV2;
+    public void setStalls(Stalls stalls) {
+        this.stalls = stalls;
     }
 
-    public Integer getStallsV3() {
-        return stallsV3;
+    public Plugs getPlugs() {
+        return plugs;
     }
-    public void setStallsV3(Integer stallsV3) {
-        this.stallsV3 = stallsV3;
-    }
-
-    public Integer getStallsV4() {
-        return stallsV4;
-    }
-    public void setStallsV4(Integer stallsV4) {
-        this.stallsV4 = stallsV4;
-    }
-
-    public Integer getStallsTrailerFriendly() {
-        return stallsTrailerFriendly;
-    }
-    public void setStallsTrailerFriendly(Integer stallsTrailerFriendly) {
-        this.stallsTrailerFriendly = stallsTrailerFriendly;
-    }
-
-    public Integer getPlugsTeslaUS() {
-        return plugsTeslaUS;
-    }
-    public void setPlugsTeslaUS(Integer plugsTeslaUS) {
-        this.plugsTeslaUS = plugsTeslaUS;
-    }
-
-    public Integer getPlugsType2() {
-        return plugsType2;
-    }
-    public void setPlugsType2(Integer plugsType2) {
-        this.plugsType2 = plugsType2;
-    }
-
-    public Integer getPlugsType2CCS2() {
-        return plugsType2CCS2;
-    }
-    public void setPlugsType2CCS2(Integer plugsType2CCS2) {
-        this.plugsType2CCS2 = plugsType2CCS2;
-    }
-
-    public Integer getPlugsCCS2() {
-        return plugsCCS2;
-    }
-    public void setPlugsCCS2(Integer plugsCCS2) {
-        this.plugsCCS2 = plugsCCS2;
-    }
-
-    public Integer getPlugsGBTChina() {
-        return plugsGBTChina;
-    }
-    public void setPlugsGBTChina(Integer plugsGBTChina) {
-        this.plugsGBTChina = plugsGBTChina;
-    }
-
-    public Integer getPlugsNACS() {
-        return plugsNACS;
-    }
-    public void setPlugsNACS(Integer plugsNACS) {
-        this.plugsNACS = plugsNACS;
+    public void setPlugs(Plugs plugs) {
+        this.plugs = plugs;
     }
 
     public Boolean isPaidParking() {
