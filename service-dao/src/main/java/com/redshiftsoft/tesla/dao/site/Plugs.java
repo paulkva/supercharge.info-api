@@ -2,51 +2,24 @@ package com.redshiftsoft.tesla.dao.site;
 
 public class Plugs {
 
-    private Integer TeslaUS;
-    private Integer Type2;
-    private Integer Type2CCS2;
-    private Integer CCS2;
-    private Integer GBTChina;
+    private Integer TPC;
     private Integer NACS;
     private Integer MagicDock;
+    private Integer GBTChina;
+    private Integer Type2;
+    private Integer CCS2;
+    private Integer CCS2Type2;
+    private Integer CCS2TPC;
 
     public Plugs nullIfEmpty() {
-        return TeslaUS == null && Type2 == null && Type2CCS2 == null && CCS2 == null && GBTChina == null && NACS == null && MagicDock == null ? null : this;
+        return TPC == null && NACS == null && MagicDock == null && GBTChina == null && Type2 == null && CCS2 == null && CCS2Type2 == null && CCS2TPC == null ? null : this;
     }
 
-    public Integer getTeslaUS() {
-        return TeslaUS;
+    public Integer getTPC() {
+        return TPC;
     }
-    public void setTeslaUS(Integer TeslaUS) {
-        this.TeslaUS = TeslaUS;
-    }
-
-    public Integer getType2() {
-        return Type2;
-    }
-    public void setType2(Integer Type2) {
-        this.Type2 = Type2;
-    }
-
-    public Integer getType2CCS2() {
-        return Type2CCS2;
-    }
-    public void setType2CCS2(Integer Type2CCS2) {
-        this.Type2CCS2 = Type2CCS2;
-    }
-
-    public Integer getCCS2() {
-        return CCS2;
-    }
-    public void setCCS2(Integer CCS2) {
-        this.CCS2 = CCS2;
-    }
-
-    public Integer getGBTChina() {
-        return GBTChina;
-    }
-    public void setGBTChina(Integer GBTChina) {
-        this.GBTChina = GBTChina;
+    public void setTPC(Integer TPC) {
+        this.TPC = TPC;
     }
 
     public Integer getNACS() {
@@ -61,6 +34,41 @@ public class Plugs {
     }
     public void setMagicDock(Integer MagicDock) {
         this.MagicDock = MagicDock;
+    }
+
+    public Integer getGBTChina() {
+        return GBTChina;
+    }
+    public void setGBTChina(Integer GBTChina) {
+        this.GBTChina = GBTChina;
+    }
+
+    public Integer getType2() {
+        return Type2;
+    }
+    public void setType2(Integer Type2) {
+        this.Type2 = Type2;
+    }
+
+    public Integer getCCS2() {
+        return CCS2;
+    }
+    public void setCCS2(Integer CCS2) {
+        this.CCS2 = CCS2;
+    }
+
+    public Integer getCCS2Type2() {
+        return CCS2Type2;
+    }
+    public void setCCS2Type2(Integer CCS2Type2) {
+        this.CCS2Type2 = CCS2Type2;
+    }
+
+    public Integer getCCS2TPC() {
+        return CCS2TPC;
+    }
+    public void setCCS2TPC(Integer CCS2TPC) {
+        this.CCS2TPC = CCS2TPC;
     }
 
 }

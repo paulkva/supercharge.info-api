@@ -17,7 +17,7 @@ public class SiteUpdateStatementCreator implements PreparedStatementCreator {
             "gps_latitude=?,gps_longitude=?,elevation_meters=?,url_discuss=?,stall_count=?,power_kwatt=?," +
             "has_solar_canopy=?,has_battery=?,developer_notes=?,modified_date=now(),version=version+1,other_evs=?," +
             "stalls_urban=?,stalls_v2=?,stalls_v3=?,stalls_v4=?,stalls_trailer=?," +
-            "plugs_tesla_us=?,plugs_type2=?,plugs_type2_ccs2=?,plugs_ccs2=?,plugs_gbt_china=?,plugs_nacs=?,plugs_magicdock=?," +
+            "plugs_tpc=?,plugs_nacs=?,plugs_magicdock=?,plugs_gbt_china=?,plugs_type2=?,plugs_ccs2=?,plugs_ccs2_type2=?,plugs_ccs2_tpc=?," +
             "paid_parking=?,facility_name=?,facility_hours=?,access_notes=?,address_notes=?,plugshare_id=?,osm_id=?" +
             " where site_id=?";
 
@@ -69,13 +69,14 @@ public class SiteUpdateStatementCreator implements PreparedStatementCreator {
 
         Plugs plugs = site.getPlugs();
         if (plugs == null) plugs = new Plugs();
-        stat.setObject(c++, plugs.getTeslaUS(), Types.INTEGER);
-        stat.setObject(c++, plugs.getType2(), Types.INTEGER);
-        stat.setObject(c++, plugs.getType2CCS2(), Types.INTEGER);
-        stat.setObject(c++, plugs.getCCS2(), Types.INTEGER);
-        stat.setObject(c++, plugs.getGBTChina(), Types.INTEGER);
+        stat.setObject(c++, plugs.getTPC(), Types.INTEGER);
         stat.setObject(c++, plugs.getNACS(), Types.INTEGER);
         stat.setObject(c++, plugs.getMagicDock(), Types.INTEGER);
+        stat.setObject(c++, plugs.getGBTChina(), Types.INTEGER);
+        stat.setObject(c++, plugs.getType2(), Types.INTEGER);
+        stat.setObject(c++, plugs.getCCS2(), Types.INTEGER);
+        stat.setObject(c++, plugs.getCCS2Type2(), Types.INTEGER);
+        stat.setObject(c++, plugs.getCCS2TPC(), Types.INTEGER);
 
         stat.setObject(c++, site.isPaidParking(), Types.BOOLEAN);
         stat.setString(c++, string(site.getFacilityName()));

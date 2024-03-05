@@ -62,13 +62,14 @@ public class SiteRowMapper implements RowMapper<Site> {
         site.setStalls(stalls.nullIfEmpty());
 
         Plugs plugs = new Plugs();
-        plugs.setTeslaUS(rs.getObject(c++, Integer.class));
-        plugs.setType2(rs.getObject(c++, Integer.class));
-        plugs.setType2CCS2(rs.getObject(c++, Integer.class));
-        plugs.setCCS2(rs.getObject(c++, Integer.class));
-        plugs.setGBTChina(rs.getObject(c++, Integer.class));
+        plugs.setTPC(rs.getObject(c++, Integer.class));
         plugs.setNACS(rs.getObject(c++, Integer.class));
         plugs.setMagicDock(rs.getObject(c++, Integer.class));
+        plugs.setGBTChina(rs.getObject(c++, Integer.class));
+        plugs.setType2(rs.getObject(c++, Integer.class));
+        plugs.setCCS2(rs.getObject(c++, Integer.class));
+        plugs.setCCS2Type2(rs.getObject(c++, Integer.class));
+        plugs.setCCS2TPC(rs.getObject(c++, Integer.class));
         site.setPlugs(plugs.nullIfEmpty());
 
         site.setPaidParking(rs.getObject(c++, Boolean.class));

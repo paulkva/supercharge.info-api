@@ -59,18 +59,22 @@ public class SiteDiffLogger {
         diff(builder, "isBattery", oldSite.isBattery(), newSite.isBattery());
         diff(builder, "otherEVs", oldSite.isOtherEVs(), newSite.isOtherEVs());
         diff(builder, "developerNotes", oldSite.getDeveloperNotes(), newSite.getDeveloperNotes());
+
         diff(builder, "stallsUrban", oldStalls.getUrban(), newStalls.getUrban());
         diff(builder, "stallsV2", oldStalls.getV2(), newStalls.getV2());
         diff(builder, "stallsV3", oldStalls.getV3(), newStalls.getV3());
         diff(builder, "stallsV4", oldStalls.getV4(), newStalls.getV4());
         diff(builder, "stallsTrailerFriendly", oldStalls.getTrailerFriendly(), newStalls.getTrailerFriendly());
-        diff(builder, "plugsTeslaUS", oldPlugs.getTeslaUS(), newPlugs.getTeslaUS());
-        diff(builder, "plugsType2", oldPlugs.getType2(), newPlugs.getType2());
-        diff(builder, "plugsType2CCS2", oldPlugs.getType2CCS2(), newPlugs.getType2CCS2());
-        diff(builder, "plugsCCS2", oldPlugs.getCCS2(), newPlugs.getCCS2());
-        diff(builder, "plugsGBTChina", oldPlugs.getGBTChina(), newPlugs.getGBTChina());
+
+        diff(builder, "plugsTPC", oldPlugs.getTPC(), newPlugs.getTPC());
         diff(builder, "plugsNACS", oldPlugs.getNACS(), newPlugs.getNACS());
         diff(builder, "plugsMagicDock", oldPlugs.getMagicDock(), newPlugs.getMagicDock());
+        diff(builder, "plugsGBTChina", oldPlugs.getGBTChina(), newPlugs.getGBTChina());
+        diff(builder, "plugsType2", oldPlugs.getType2(), newPlugs.getType2());
+        diff(builder, "plugsCCS2", oldPlugs.getCCS2(), newPlugs.getCCS2());
+        diff(builder, "plugsCCS2Type2", oldPlugs.getCCS2Type2(), newPlugs.getCCS2Type2());
+        diff(builder, "plugsCCS2TPC", oldPlugs.getCCS2TPC(), newPlugs.getCCS2TPC());
+
         diff(builder, "paidParking", oldSite.isPaidParking(), newSite.isPaidParking());
         diff(builder, "facilityName", oldSite.getFacilityName(), newSite.getFacilityName());
         diff(builder, "facilityHours", oldSite.getFacilityHours(), newSite.getFacilityHours());

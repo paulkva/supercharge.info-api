@@ -13,7 +13,7 @@ import static com.redshiftsoft.tesla.dao.DAOTools.string;
 
 public class SiteInsertStatementCreator implements PreparedStatementCreator {
 
-    private static final String SQL = "insert into site values (DEFAULT,?,?,?::SITE_STATUS_TYPE,?,?,?,?,?,?,?,?,?,?,?,?,?,?,NOW(),?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    private static final String SQL = "insert into site values (DEFAULT,?,?,?::SITE_STATUS_TYPE,?,?,?,?,?,?,?,?,?,?,?,?,?,?,NOW(),?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     private final Site site;
 
     public SiteInsertStatementCreator(Site site) {
@@ -65,13 +65,14 @@ public class SiteInsertStatementCreator implements PreparedStatementCreator {
 
         Plugs plugs = site.getPlugs();
         if (plugs == null) plugs = new Plugs();
-        stat.setObject(c++, plugs.getTeslaUS(), Types.INTEGER);
-        stat.setObject(c++, plugs.getType2(), Types.INTEGER);
-        stat.setObject(c++, plugs.getType2CCS2(), Types.INTEGER);
-        stat.setObject(c++, plugs.getCCS2(), Types.INTEGER);
-        stat.setObject(c++, plugs.getGBTChina(), Types.INTEGER);
+        stat.setObject(c++, plugs.getTPC(), Types.INTEGER);
         stat.setObject(c++, plugs.getNACS(), Types.INTEGER);
         stat.setObject(c++, plugs.getMagicDock(), Types.INTEGER);
+        stat.setObject(c++, plugs.getGBTChina(), Types.INTEGER);
+        stat.setObject(c++, plugs.getType2(), Types.INTEGER);
+        stat.setObject(c++, plugs.getCCS2(), Types.INTEGER);
+        stat.setObject(c++, plugs.getCCS2Type2(), Types.INTEGER);
+        stat.setObject(c++, plugs.getCCS2TPC(), Types.INTEGER);
 
         stat.setObject(c++, site.isPaidParking(), Types.BOOLEAN);
         stat.setString(c++, string(site.getFacilityName()));
@@ -83,6 +84,5 @@ public class SiteInsertStatementCreator implements PreparedStatementCreator {
 
         return stat;
     }
-
 
 }
