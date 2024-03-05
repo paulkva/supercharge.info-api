@@ -18,6 +18,19 @@ public class PlugsDTO {
         return TPC == null && NACS == null && MagicDock == null && GBTChina == null && Type2 == null && CCS2 == null && CCS2Type2 == null && CCS2TPC == null ? null : this;
     }
 
+    public int getTotal() {
+        int total = 0;
+        if (TPC != null) total += TPC;
+        if (NACS != null) total += NACS;
+        if (MagicDock != null) total += MagicDock;
+        if (GBTChina != null) total += GBTChina;
+        if (Type2 != null) total += Type2;
+        if (CCS2 != null) total += CCS2;
+        if (CCS2Type2 != null) total += CCS2Type2;
+        if (CCS2TPC != null) total += CCS2TPC;
+        return total;
+    }
+
     public Integer getTPC() {
         return TPC;
     }

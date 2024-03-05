@@ -26,4 +26,13 @@ alter table site
     add column address_notes    varchar(1000)                  null     default null::character varying,
     add column plugshare_id     int8                           null,
     add column osm_id           int8                           null;
-    
+
+alter table country
+    add column plugs_tpc        boolean      not null default true,
+    add column plugs_nacs       boolean      not null default true,
+    add column plugs_magicdock  boolean      not null default true,
+    add column plugs_gbt_china  boolean      not null default true,
+    add column plugs_type2      boolean      not null default true,
+    add column plugs_ccs2       boolean      not null default true,
+    add column plugs_ccs2_type2 boolean      not null default true,
+    add column plugs_ccs2_tpc   boolean      not null default true

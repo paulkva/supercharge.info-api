@@ -15,6 +15,15 @@ public class Country {
     /* Is the state field required for addresses in this country. */
     private boolean stateRequired;
 
+    private boolean plugTPC;
+    private boolean plugNACS;
+    private boolean plugMagicDock;
+    private boolean plugGBTChina;
+    private boolean plugType2;
+    private boolean plugCCS2;
+    private boolean plugCCS2Type2;
+    private boolean plugCCS2TPC;
+
     public Country() {
     }
 
@@ -65,7 +74,6 @@ public class Country {
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
@@ -73,7 +81,6 @@ public class Country {
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -81,7 +88,6 @@ public class Country {
     public String getCode() {
         return code;
     }
-
     public void setCode(String code) {
         this.code = code;
     }
@@ -89,7 +95,6 @@ public class Country {
     public int getRegionId() {
         return regionId;
     }
-
     public void setRegionId(int regionId) {
         this.regionId = regionId;
     }
@@ -97,7 +102,6 @@ public class Country {
     public String getRegionName() {
         return regionName;
     }
-
     public void setRegionName(String regionName) {
         this.regionName = regionName;
     }
@@ -105,8 +109,64 @@ public class Country {
     public boolean isStateRequired() {
         return stateRequired;
     }
-
     public void setStateRequired(boolean stateRequired) {
         this.stateRequired = stateRequired;
     }
+
+    public boolean isPlugTPC() {
+        return plugTPC;
+    }
+    public void setPlugTPC(boolean plugTPC) {
+        this.plugTPC = plugTPC;
+    }
+
+    public boolean isPlugNACS() {
+        return plugNACS;
+    }
+    public void setPlugNACS(boolean plugNACS) {
+        this.plugNACS = plugNACS;
+    }
+
+    public boolean isPlugMagicDock() {
+        return plugMagicDock;
+    }
+    public void setPlugMagicDock(boolean plugMagicDock) {
+        this.plugMagicDock = plugMagicDock;
+    }
+
+    public boolean isPlugGBTChina() {
+        return plugGBTChina;
+    }
+    public void setPlugGBTChina(boolean plugGBTChina) {
+        this.plugGBTChina = plugGBTChina;
+    }
+
+    public boolean isPlugType2() {
+        return plugType2;
+    }
+    public void setPlugType2(boolean plugType2) {
+        this.plugType2 = plugType2;
+    }
+
+    public boolean isPlugCCS2() {
+        return plugCCS2;
+    }
+    public void setPlugCCS2(boolean plugCCS2) {
+        this.plugCCS2 = plugCCS2;
+    }
+
+    public boolean isPlugCCS2Type2() {
+        return plugCCS2Type2;
+    }
+    public void setPlugCCS2Type2(boolean plugCCS2Type2) {
+        this.plugCCS2Type2 = plugCCS2Type2;
+    }
+
+    public boolean isPlugCCS2TPC() {
+        return plugCCS2TPC;
+    }
+    public void setPlugCCS2TPC(boolean plugCCS2TPC) {
+        this.plugCCS2TPC = plugCCS2TPC;
+    }
+
 }

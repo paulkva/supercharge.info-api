@@ -16,6 +16,15 @@ public class StallsDTO {
         return urban == null && v2 == null && v3 == null && v4 == null && trailerFriendly == null ? null : this;
     }
 
+    public int getTotal() {
+        int total = 0;
+        if (urban != null) total += urban;
+        if (v2 != null) total += v2;
+        if (v3 != null) total += v3;
+        if (v4 != null) total += v4;
+        return total;
+    }
+
     public Integer getUrban() {
         return urban;
     }

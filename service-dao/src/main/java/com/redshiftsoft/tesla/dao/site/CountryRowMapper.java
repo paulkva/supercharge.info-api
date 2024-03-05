@@ -30,6 +30,16 @@ class CountryRowMapper implements RowMapper<Country> {
         country.setRegionId(rs.getInt(c++));
         country.setStateRequired(rs.getBoolean(c++));
         c++; // modified_date
+        
+        country.setPlugTPC(rs.getBoolean(c++));
+        country.setPlugNACS(rs.getBoolean(c++));
+        country.setPlugMagicDock(rs.getBoolean(c++));
+        country.setPlugGBTChina(rs.getBoolean(c++));
+        country.setPlugType2(rs.getBoolean(c++));
+        country.setPlugCCS2(rs.getBoolean(c++));
+        country.setPlugCCS2Type2(rs.getBoolean(c++));
+        country.setPlugCCS2TPC(rs.getBoolean(c++));
+
         country.setRegionName(rs.getString(c));
         return country;
     }

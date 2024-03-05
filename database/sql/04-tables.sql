@@ -40,12 +40,20 @@ alter sequence region_region_id_seq restart with 150;
 -- -----------------------------------------------------------
 create table country
 (
-    country_id     serial primary key,
-    name           varchar(100) not null unique,
-    code           varchar(2)   not null unique,
-    region_id      int          not null,
-    state_required boolean      not null default false,
-    modified_date  timestamptz  not null default current_timestamp,
+    country_id       serial primary key,
+    name             varchar(100) not null unique,
+    code             varchar(2)   not null unique,
+    region_id        int          not null,
+    state_required   boolean      not null default false,
+    modified_date    timestamptz  not null default current_timestamp,
+    plugs_tpc        boolean      not null default true,
+    plugs_nacs       boolean      not null default true,
+    plugs_magicdock  boolean      not null default true,
+    plugs_gbt_china  boolean      not null default true,
+    plugs_type2      boolean      not null default true,
+    plugs_ccs2       boolean      not null default true,
+    plugs_ccs2_type2 boolean      not null default true,
+    plugs_ccs2_tpc   boolean      not null default true,
     foreign key (region_id) references region (region_id)
         on update cascade
         on delete cascade

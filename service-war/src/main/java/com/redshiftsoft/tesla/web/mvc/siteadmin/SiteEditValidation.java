@@ -67,9 +67,9 @@ public class SiteEditValidation {
         //
         // Date Opened
         //
-        if (SiteStatus.OPEN.equals(site.getStatus())) {
+        if (SiteStatus.OPEN.equals(site.getStatus()) || SiteStatus.EXPANDING.equals(site.getStatus())) {
             if (site.getDateOpened() == null) {
-                errorMessages.add("missing open date for OPEN site");
+                errorMessages.add("missing open date for OPEN or EXPANDING site");
             }
         } else {
             if (site.getDateOpened() != null) {
@@ -116,7 +116,19 @@ public class SiteEditValidation {
         if (site.getStallCount() <= 0) {
             errorMessages.add("stall count must be at least 1");
         }
+        if (site.getStalls() != null && site.getStallCount() < site.getStalls().getTotal()) {
+            errorMessages.add("stall count cannot be less than total of individual stall type counts (and should be equal)");
+        }
+        if (site.getStalls() != null && site.getStallCount() < site.getStalls().getTrailerFriendly()) {
+            errorMessages.add("stall count cannot be less than # of trailer-friendly stalls");
+        }
+        if (site.getPlugs() != null && site.getStallCount() < site.getPlugs().getTotal()) {
+            errorMessages.add("stall count cannot be less than # of individual plug type counts (and should be equal)");
+        }
 
+		//
+		// power
+		//
         if (site.getPowerKiloWatt() < 0 || site.getPowerKiloWatt() > 500) {
             errorMessages.add("power must be in range [0,500]");
         }
