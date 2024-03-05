@@ -9,6 +9,10 @@ public class Plugs {
     private Integer GBTChina;
     private Integer NACS;
 
+    public Plugs nullIfEmpty() {
+        return TeslaUS == null && Type2 == null && Type2CCS2 == null && CCS2 == null && GBTChina == null && NACS == null ? null : this;
+    }
+
     public Integer getTeslaUS() {
         return TeslaUS;
     }

@@ -53,18 +53,22 @@ public class SiteRowMapper implements RowMapper<Site> {
         site.setOtherEVs(rs.getBoolean(c++));
 
         // Used typed getObject() instead of specific getX() for better null handling
-        site.getStalls().setUrban(rs.getObject(c++, Integer.class));
-        site.getStalls().setV2(rs.getObject(c++, Integer.class));
-        site.getStalls().setV3(rs.getObject(c++, Integer.class));
-        site.getStalls().setV4(rs.getObject(c++, Integer.class));
-        site.getStalls().setTrailerFriendly(rs.getObject(c++, Integer.class));
+        Stalls stalls = new Stalls();
+        stalls.setUrban(rs.getObject(c++, Integer.class));
+        stalls.setV2(rs.getObject(c++, Integer.class));
+        stalls.setV3(rs.getObject(c++, Integer.class));
+        stalls.setV4(rs.getObject(c++, Integer.class));
+        stalls.setTrailerFriendly(rs.getObject(c++, Integer.class));
+        site.setStalls(stalls.nullIfEmpty());
 
-        site.getPlugs().setTeslaUS(rs.getObject(c++, Integer.class));
-        site.getPlugs().setType2(rs.getObject(c++, Integer.class));
-        site.getPlugs().setType2CCS2(rs.getObject(c++, Integer.class));
-        site.getPlugs().setCCS2(rs.getObject(c++, Integer.class));
-        site.getPlugs().setGBTChina(rs.getObject(c++, Integer.class));
-        site.getPlugs().setNACS(rs.getObject(c++, Integer.class));
+        Plugs plugs = new Plugs();
+        plugs.setTeslaUS(rs.getObject(c++, Integer.class));
+        plugs.setType2(rs.getObject(c++, Integer.class));
+        plugs.setType2CCS2(rs.getObject(c++, Integer.class));
+        plugs.setCCS2(rs.getObject(c++, Integer.class));
+        plugs.setGBTChina(rs.getObject(c++, Integer.class));
+        plugs.setNACS(rs.getObject(c++, Integer.class));
+        site.setPlugs(plugs.nullIfEmpty());
 
         site.setPaidParking(rs.getObject(c++, Boolean.class));
         site.setFacilityName(rs.getString(c++));

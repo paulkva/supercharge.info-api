@@ -1,6 +1,7 @@
 package com.redshiftsoft.tesla.web.mvc.site;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.redshiftsoft.tesla.dao.site.Plugs;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PlugsDTO {
@@ -11,6 +12,10 @@ public class PlugsDTO {
     private Integer CCS2;
     private Integer GBTChina;
     private Integer NACS;
+
+    public PlugsDTO nullIfEmpty() {
+        return TeslaUS == null && Type2 == null && Type2CCS2 == null && CCS2 == null && GBTChina == null && NACS == null ? null : this;
+    }
 
     public Integer getTeslaUS() {
         return TeslaUS;

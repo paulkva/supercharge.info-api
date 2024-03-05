@@ -1,6 +1,7 @@
 package com.redshiftsoft.tesla.web.mvc.site;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.redshiftsoft.tesla.dao.site.Stalls;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class StallsDTO {
@@ -10,6 +11,10 @@ public class StallsDTO {
     private Integer v3;
     private Integer v4;
     private Integer trailerFriendly;
+
+    public StallsDTO nullIfEmpty() {
+        return urban == null && v2 == null && v3 == null && v4 == null && trailerFriendly == null ? null : this;
+    }
 
     public Integer getUrban() {
         return urban;

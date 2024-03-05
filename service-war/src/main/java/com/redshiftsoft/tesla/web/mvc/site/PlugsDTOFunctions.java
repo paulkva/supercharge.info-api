@@ -21,6 +21,8 @@ public class PlugsDTOFunctions {
 
         @Override
         public PlugsDTO apply(Plugs plugs) {
+            if (plugs == null) return null;
+            
             PlugsDTO plugsDTO = new PlugsDTO();
 
             plugsDTO.setTeslaUS(plugs.getTeslaUS());
@@ -30,7 +32,7 @@ public class PlugsDTOFunctions {
             plugsDTO.setGBTChina(plugs.getGBTChina());
             plugsDTO.setNACS(plugs.getNACS());
 
-            return plugsDTO;
+            return plugsDTO.nullIfEmpty();
         }
     }
 
@@ -38,6 +40,8 @@ public class PlugsDTOFunctions {
 
         @Override
         public Plugs apply(PlugsDTO plugsDTO) {
+            if (plugsDTO == null) return null;
+
             Plugs plugs = new Plugs();
 
             plugs.setTeslaUS(plugsDTO.getTeslaUS());
@@ -47,7 +51,7 @@ public class PlugsDTOFunctions {
             plugs.setGBTChina(plugsDTO.getGBTChina());
             plugs.setNACS(plugsDTO.getNACS());
 
-            return plugs;
+            return plugs.nullIfEmpty();
         }
     }
 

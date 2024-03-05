@@ -8,6 +8,10 @@ public class Stalls {
     private Integer v4;
     private Integer trailerFriendly;
 
+    public Stalls nullIfEmpty() {
+        return urban == null && v2 == null && v3 == null && v4 == null && trailerFriendly == null ? null : this;
+    }
+
     public Integer getUrban() {
         return urban;
     }

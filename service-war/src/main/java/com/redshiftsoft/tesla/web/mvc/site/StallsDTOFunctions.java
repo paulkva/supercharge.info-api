@@ -21,6 +21,8 @@ public class StallsDTOFunctions {
 
         @Override
         public StallsDTO apply(Stalls stalls) {
+            if (stalls == null) return null;
+
             StallsDTO stallsDTO = new StallsDTO();
 
             stallsDTO.setUrban(stalls.getUrban());
@@ -29,7 +31,7 @@ public class StallsDTOFunctions {
             stallsDTO.setV4(stalls.getV4());
             stallsDTO.setTrailerFriendly(stalls.getTrailerFriendly());
 
-            return stallsDTO;
+            return stallsDTO.nullIfEmpty();
         }
     }
 
@@ -37,6 +39,8 @@ public class StallsDTOFunctions {
 
         @Override
         public Stalls apply(StallsDTO stallsDTO) {
+            if (stallsDTO == null) return null;
+
             Stalls stalls = new Stalls();
 
             stalls.setUrban(stallsDTO.getUrban());
@@ -45,7 +49,7 @@ public class StallsDTOFunctions {
             stalls.setV4(stallsDTO.getV4());
             stalls.setTrailerFriendly(stallsDTO.getTrailerFriendly());
 
-            return stalls;
+            return stalls.nullIfEmpty();
         }
     }
 
