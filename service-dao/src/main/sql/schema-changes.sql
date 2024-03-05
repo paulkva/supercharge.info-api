@@ -35,4 +35,4 @@ alter table country
     add column plugs_type2      boolean      not null default true,
     add column plugs_ccs2       boolean      not null default true,
     add column plugs_ccs2_type2 boolean      not null default true,
-    add column plugs_ccs2_tpc   boolean      not null default true
+    add column plugs_ccs2_tpc   boolean      not null default true;

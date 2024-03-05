@@ -15,6 +15,14 @@ public class CountryDTOFunction implements Function<Country, CountryDTO> {
         countryDTO.setCode(country.getCode());
         countryDTO.setRegionId(country.getRegionId());
         countryDTO.setRegion(country.getRegionName());
+        countryDTO.setPlugTPC(country.isPlugTPC());
+        countryDTO.setPlugNACS(country.isPlugNACS());
+        countryDTO.setPlugMagicDock(country.isPlugMagicDock());
+        countryDTO.setPlugGBTChina(country.isPlugGBTChina());
+        countryDTO.setPlugType2(country.isPlugType2());
+        countryDTO.setPlugCCS2(country.isPlugCCS2());
+        countryDTO.setPlugCCS2Type2(country.isPlugCCS2Type2());
+        countryDTO.setPlugCCS2TPC(country.isPlugCCS2TPC());
 
         return countryDTO;
     }
