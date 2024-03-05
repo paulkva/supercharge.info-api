@@ -68,6 +68,7 @@ public class SiteRowMapper implements RowMapper<Site> {
         plugs.setCCS2(rs.getObject(c++, Integer.class));
         plugs.setGBTChina(rs.getObject(c++, Integer.class));
         plugs.setNACS(rs.getObject(c++, Integer.class));
+        plugs.setMagicDock(rs.getObject(c++, Integer.class));
         site.setPlugs(plugs.nullIfEmpty());
 
         site.setPaidParking(rs.getObject(c++, Boolean.class));

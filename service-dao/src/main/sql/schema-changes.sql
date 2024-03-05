@@ -17,6 +17,7 @@ alter table site
     add column plugs_ccs2       int4                           null,
     add column plugs_gbt_china  int4                           null,
     add column plugs_nacs       int4                           null,
+    add column plugs_magicdock  int4                           null,
     add column paid_parking     bool                           null,
     add column facility_name    varchar(200)                   null     default null::character varying,
     add column facility_hours   varchar(100)                   null     default null::character varying,

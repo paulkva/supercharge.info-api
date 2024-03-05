@@ -22,7 +22,7 @@ public class PlugsDTOFunctions {
         @Override
         public PlugsDTO apply(Plugs plugs) {
             if (plugs == null) return null;
-            
+
             PlugsDTO plugsDTO = new PlugsDTO();
 
             plugsDTO.setTeslaUS(plugs.getTeslaUS());
@@ -31,6 +31,7 @@ public class PlugsDTOFunctions {
             plugsDTO.setCCS2(plugs.getCCS2());
             plugsDTO.setGBTChina(plugs.getGBTChina());
             plugsDTO.setNACS(plugs.getNACS());
+            plugsDTO.setMagicDock(plugs.getMagicDock());
 
             return plugsDTO.nullIfEmpty();
         }
@@ -50,6 +51,7 @@ public class PlugsDTOFunctions {
             plugs.setCCS2(plugsDTO.getCCS2());
             plugs.setGBTChina(plugsDTO.getGBTChina());
             plugs.setNACS(plugsDTO.getNACS());
+            plugs.setMagicDock(plugsDTO.getMagicDock());
 
             return plugs.nullIfEmpty();
         }

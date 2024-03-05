@@ -51,8 +51,8 @@ public class SiteDTO {
     /* True if there is one, false otherwise */
     private boolean urlDiscuss;
 
-    private StallsDTO stalls = new StallsDTO();
-    private PlugsDTO plugs = new PlugsDTO();
+    private StallsDTO stalls = null;
+    private PlugsDTO plugs = null;
 
     private Boolean paidParking;
     private String facilityName, facilityHours, accessNotes, addressNotes;

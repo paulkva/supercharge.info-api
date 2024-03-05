@@ -8,9 +8,10 @@ public class Plugs {
     private Integer CCS2;
     private Integer GBTChina;
     private Integer NACS;
+    private Integer MagicDock;
 
     public Plugs nullIfEmpty() {
-        return TeslaUS == null && Type2 == null && Type2CCS2 == null && CCS2 == null && GBTChina == null && NACS == null ? null : this;
+        return TeslaUS == null && Type2 == null && Type2CCS2 == null && CCS2 == null && GBTChina == null && NACS == null && MagicDock == null ? null : this;
     }
 
     public Integer getTeslaUS() {
@@ -55,4 +56,11 @@ public class Plugs {
         this.NACS = NACS;
     }
     
+    public Integer getMagicDock() {
+        return MagicDock;
+    }
+    public void setMagicDock(Integer MagicDock) {
+        this.MagicDock = MagicDock;
+    }
+
 }
