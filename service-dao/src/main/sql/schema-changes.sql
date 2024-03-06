@@ -39,6 +39,7 @@ alter table country
 
 -- pre-populate valid plug types per country
 UPDATE country SET plugs_gbt_china = false WHERE country_id != (SELECT country_id WHERE name = 'China');
+UPDATE country SET plugs_tpc = false, plugs_nacs = false, plugs_magicdock = false, plugs_type2 = false, plugs_ccs2 = false, plugs_ccs2_type2 = false, plugs_ccs2_tpc = false WHERE country_id = (SELECT country_id WHERE name = 'China');
 UPDATE country SET plugs_tpc = false, plugs_magicdock = false, plugs_nacs = false WHERE region_id = 101; -- EU
 UPDATE country SET plugs_type2 = false, plugs_ccs2 = false, plugs_ccs2_type2 = false, plugs_ccs2_tpc = false WHERE region_id = 100; -- NA
 
@@ -95,5 +96,5 @@ AND c.region_id = 101 AND s.power_kwatt BETWEEN 73 AND 199;
 UPDATE site s SET plugs_ccs2 = stall_count
 FROM address a, country c
 WHERE s.address_id = a.address_id AND a.country_id = c.country_id
-AND c.region_id != 100 AND c.name NOT IN ('China', 'Japan', 'Jordan', 'South Korea', 'Taiwan');
+AND c.region_id != 100 AND c.name NOT IN ('China', 'Japan', 'Jordan', 'South Korea', 'Taiwan')
 AND NOT (c.region_id = 101 AND s.power_kwatt BETWEEN 73 AND 199);
