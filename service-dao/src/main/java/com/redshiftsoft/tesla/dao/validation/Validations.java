@@ -54,7 +54,7 @@ public class Validations {
                         "WHERE COALESCE(stall_count, 0) < COALESCE(stalls_urban, 0) + COALESCE(stalls_v2, 0) + COALESCE(stalls_v3, 0) + COALESCE(stalls_v4, 0) " +
                         "OR COALESCE(stall_count, 0) < COALESCE(plugs_tpc, 0) + COALESCE(plugs_nacs, 0) + COALESCE(plugs_magicdock, 0) + COALESCE(plugs_gbt_china, 0) + " +
                         "COALESCE(plugs_type2, 0) + COALESCE(plugs_ccs2, 0) + COALESCE(plugs_ccs2_type2, 0) + COALESCE(plugs_ccs2_tpc, 0) " +
-                        "OR COALESCE(stall_count, 0) < COALESCE(stalls_trailer_friendly, 0)")
+                        "OR COALESCE(stall_count, 0) < COALESCE(stalls_trailer, 0)")
         );
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - | ADDRESS
