@@ -7541,3 +7541,46 @@ COPY "supercharge"."site_change" ("site_id", "user_id", "version", "change_date"
 -- PostgreSQL database dump complete
 --
 
+-- Pre-populate plugs based on geography, max power, and existing other_evs flag
+
+-- All stalls in China are GB/T
+UPDATE site s SET plugs_gbt_china = stall_count
+FROM address a, country c
+WHERE s.address_id = a.address_id AND a.country_id = c.country_id
+AND c.name = 'China';
+
+-- All stalls in Jordan are Type2
+UPDATE site s SET plugs_type2 = stall_count
+FROM address a, country c
+WHERE s.address_id = a.address_id AND a.country_id = c.country_id
+AND c.name = 'Jordan';
+
+-- Taiwan is mostly dual-cable CCS2+TPC but some will have to be updated manually
+UPDATE site s SET plugs_ccs2_tpc = s.stall_count
+FROM address a, country c
+WHERE s.address_id = a.address_id AND a.country_id = c.country_id
+AND c.name = 'Taiwan';
+
+-- North America V2 + Urban, and all stalls in Japan + South Korea, are TPC if they're not already marked open to other EVs
+UPDATE site s SET plugs_tpc = s.stall_count
+FROM address a, country c
+WHERE s.address_id = a.address_id AND a.country_id = c.country_id
+AND ((s.power_kwatt < 200 AND c.region_id = 100) OR c.name IN ('Japan', 'South Korea')) AND NOT s.other_evs;
+
+-- North America + South Korea stalls that are already marked open to other EVs are all MagicDock
+UPDATE site s SET plugs_magicdock = s.stall_count
+FROM address a, country c
+WHERE s.address_id = a.address_id AND a.country_id = c.country_id
+AND (c.region_id = 100 OR c.name = 'South Korea') AND s.other_evs;
+
+-- North America V3 + V4 stalls are all NACS if they're not already marked open to other EVs
+UPDATE site s SET plugs_nacs = s.stall_count
+FROM address a, country c
+WHERE s.address_id = a.address_id AND a.country_id = c.country_id
+AND c.region_id = 100 AND s.power_kwatt = 250 AND NOT s.other_evs;
+
+-- Presume the rest of the world is CCS2
+UPDATE site s SET plugs_ccs2 = stall_count
+FROM address a, country c
+WHERE s.address_id = a.address_id AND a.country_id = c.country_id
+AND c.region_id != 100 AND c.name NOT IN ('China', 'Japan', 'Jordan', 'South Korea', 'Taiwan');

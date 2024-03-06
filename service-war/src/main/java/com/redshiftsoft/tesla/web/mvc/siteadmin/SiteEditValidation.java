@@ -3,6 +3,8 @@ package com.redshiftsoft.tesla.web.mvc.siteadmin;
 import com.google.common.collect.Lists;
 import com.redshiftsoft.tesla.dao.site.*;
 import com.redshiftsoft.tesla.web.mvc.site.AddressDTO;
+import com.redshiftsoft.tesla.web.mvc.site.StallsDTO;
+
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -111,15 +113,19 @@ public class SiteEditValidation {
         }
 
         //
-        // stall count
+        // stall/plug counts
         //
         if (site.getStallCount() <= 0) {
             errorMessages.add("stall count must be at least 1");
         }
-        if (site.getStalls() != null && site.getStallCount() < site.getStalls().getTotal()) {
+
+        StallsDTO stalls = site.getStalls();
+        if (stalls == null) stalls = new StallsDTO();
+
+        if (site.getStallCount() < stalls.getTotal()) {
             errorMessages.add("stall count cannot be less than total of individual stall type counts (and should be equal)");
         }
-        if (site.getStalls() != null && site.getStallCount() < site.getStalls().getTrailerFriendly()) {
+        if (stalls.getTrailerFriendly() != null && site.getStallCount() < stalls.getTrailerFriendly()) {
             errorMessages.add("stall count cannot be less than # of trailer-friendly stalls");
         }
         if (site.getPlugs() != null && site.getStallCount() < site.getPlugs().getTotal()) {
