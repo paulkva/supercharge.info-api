@@ -125,11 +125,11 @@ public class SiteEditValidation {
         if (site.getStallCount() < stalls.getTotal()) {
             errorMessages.add("stall count cannot be less than total of individual stall type counts (and should be equal)");
         }
-        if (stalls.getTrailerFriendly() != null && site.getStallCount() < stalls.getTrailerFriendly()) {
-            errorMessages.add("stall count cannot be less than # of trailer-friendly stalls");
+        if (stalls.getTrailerFriendly() != null && stalls.getTrailerFriendly() > site.getStallCount()) {
+            errorMessages.add("# of trailer-friendly stalls cannot be more than total stall count");
         }
         if (site.getPlugs() != null && site.getStallCount() < site.getPlugs().getTotal()) {
-            errorMessages.add("stall count cannot be less than # of individual plug type counts (and should be equal)");
+            errorMessages.add("stall count cannot be less than total of individual plug type counts (and should be equal)");
         }
 
 		//

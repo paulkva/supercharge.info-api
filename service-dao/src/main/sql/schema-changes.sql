@@ -85,8 +85,15 @@ FROM address a, country c
 WHERE s.address_id = a.address_id AND a.country_id = c.country_id
 AND c.region_id = 100 AND s.power_kwatt = 250 AND NOT s.other_evs;
 
+-- Europe V2 stalls are dual-cable CCS2+Type2
+UPDATE site s SET plugs_ccs2_type2 = s.stall_count
+FROM address a, country c
+WHERE s.address_id = a.address_id AND a.country_id = c.country_id
+AND c.region_id = 101 AND s.power_kwatt BETWEEN 73 AND 199;
+
 -- Presume the rest of the world is CCS2
 UPDATE site s SET plugs_ccs2 = stall_count
 FROM address a, country c
 WHERE s.address_id = a.address_id AND a.country_id = c.country_id
 AND c.region_id != 100 AND c.name NOT IN ('China', 'Japan', 'Jordan', 'South Korea', 'Taiwan');
+AND NOT (c.region_id = 101 AND s.power_kwatt BETWEEN 73 AND 199);
