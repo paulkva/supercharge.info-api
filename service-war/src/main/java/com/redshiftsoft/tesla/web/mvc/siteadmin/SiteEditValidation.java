@@ -137,7 +137,7 @@ public class SiteEditValidation {
         if (site.getStallCount() != plugs.getTotal() && (plugs.getMulti() == null || plugs.getMulti() == 0)) {
             errorMessages.add("stall count must equal total of individual plug type counts (unless any stalls are multi-plug)");
         }
-        if (plugs.getMulti() > 0 && site.getStallCount() > plugs.getTotal() - plugs.getMulti()) {
+        if (plugs.getMulti() != null && plugs.getMulti() > 0 && site.getStallCount() > plugs.getTotal() - plugs.getMulti()) {
             errorMessages.add("stall count cannot exceed total of individual plug type counts minus multi-plug count");
         }
 
