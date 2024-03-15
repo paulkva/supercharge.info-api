@@ -112,3 +112,13 @@ FROM address a, country c
 WHERE s.address_id = a.address_id AND a.country_id = c.country_id
 AND c.region_id != 100 AND c.name NOT IN ('China', 'Japan', 'Jordan', 'South Korea', 'Taiwan')
 AND NOT (c.region_id = 101 AND s.power_kwatt BETWEEN 73 AND 199);
+
+-- Pre-populate parking options
+INSERT INTO parking (name, description) VALUES 
+    ('Free at all times', 'Unrestricted at all times with no fee to park'),
+    ('Free with validation', 'No fee to park for the first N minutes of parking with proof of purchase from certain merchants'),
+    ('Free initially', 'No fee to park for the first N minutes of parking'),
+    ('Free off-peak', 'No fee to park outside of peak hours/days (e.g. nights, weekends)'),
+    ('Paid - self parking', 'Fee to park at all times'),
+    ('Paid - valet parking', 'Fee to park at all times with valet assistance'),
+    ('Other - see notes', 'Details provided in "Access Notes"');
