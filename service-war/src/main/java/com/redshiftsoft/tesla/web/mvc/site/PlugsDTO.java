@@ -1,7 +1,7 @@
 package com.redshiftsoft.tesla.web.mvc.site;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.redshiftsoft.tesla.dao.site.Plugs;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PlugsDTO {
@@ -19,6 +19,7 @@ public class PlugsDTO {
         return TPC == null && NACS == null && CCS1 == null && CCS2 == null && Type2 == null && GBT == null && Other == null && Multi == null ? null : this;
     }
 
+    @JsonIgnore
     public int getTotal() {
         int total = 0;
         if (TPC != null) total += TPC;

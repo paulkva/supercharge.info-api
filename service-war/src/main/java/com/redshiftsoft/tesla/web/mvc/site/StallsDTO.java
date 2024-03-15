@@ -1,5 +1,6 @@
 package com.redshiftsoft.tesla.web.mvc.site;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.redshiftsoft.tesla.dao.site.Stalls;
 
@@ -18,6 +19,7 @@ public class StallsDTO {
         return urban == null && v2 == null && v3 == null && v4 == null && other == null && accessible == null && trailerFriendly == null ? null : this;
     }
 
+    @JsonIgnore
     public int getTotal() {
         int total = 0;
         if (urban != null) total += urban;
