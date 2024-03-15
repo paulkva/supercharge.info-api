@@ -60,7 +60,7 @@ public class Validations {
                 new Validation(SUPERCHARGER, "accessible and/or trailer-friendly stall counts exceed total", "" +
                         "SELECT * " +
                         "FROM site " +
-                        "WHERE COALESCE(stalls_accessible, 0) > stall_count" +
+                        "WHERE COALESCE(stalls_accessible, 0) > stall_count " +
                         "OR COALESCE(stalls_trailer, 0) > stall_count")
         );
 
