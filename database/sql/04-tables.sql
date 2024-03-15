@@ -14,6 +14,7 @@ drop table if exists user_config;
 drop table if exists user_reset;
 drop table if exists changelog;
 drop table if exists site_change;
+drop table if exists parking;
 drop table if exists site;
 drop table if exists address;
 drop table if exists country;

@@ -11,6 +11,8 @@ create table parking
     name          varchar(100) not null,
     description   text null
 );
+-- not sure why this needs to be done separately/explicitly, considering the contents of 03-permissions.sql
+grant all privileges on parking to supercharge_user;
 
 alter table site 
     add column stalls_urban      int4                           null,

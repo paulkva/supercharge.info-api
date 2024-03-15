@@ -74,7 +74,6 @@ public class SiteRowMapper implements RowMapper<Site> {
         plugs.setMulti(rs.getObject(c++, Integer.class));
         site.setPlugs(plugs.nullIfEmpty());
 
-        System.out.println(rs.getObject(c, Integer.class));
         site.setParkingId(rs.getObject(c++, Integer.class));
         site.setFacilityName(rs.getString(c++));
         site.setFacilityHours(rs.getString(c++));
