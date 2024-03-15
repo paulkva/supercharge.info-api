@@ -16,8 +16,8 @@ public class SiteUpdateStatementCreator implements PreparedStatementCreator {
             "set location_id=?,name=?,status=?::SITE_STATUS_TYPE,opened_date=?,hours=?,enabled=?,counted=?," +
             "gps_latitude=?,gps_longitude=?,elevation_meters=?,url_discuss=?,stall_count=?,power_kwatt=?," +
             "has_solar_canopy=?,has_battery=?,developer_notes=?,modified_date=now(),version=version+1,other_evs=?," +
-            "stalls_urban=?,stalls_v2=?,stalls_v3=?,stalls_v4=?,stalls_trailer=?," +
-            "plugs_tpc=?,plugs_nacs=?,plugs_magicdock=?,plugs_gbt_china=?,plugs_type2=?,plugs_ccs2=?,plugs_ccs2_type2=?,plugs_ccs2_tpc=?," +
+            "stalls_urban=?,stalls_v2=?,stalls_v3=?,stalls_v4=?,stalls_other=?,stalls_accessible=?,stalls_trailer=?," +
+            "plugs_tpc=?,plugs_nacs=?,plugs_ccs1=?,plugs_ccs2=?,plugs_type2=?,plugs_gbt=?,plugs_other=?,plugs_multi=?," +
             "paid_parking=?,facility_name=?,facility_hours=?,access_notes=?,address_notes=?,plugshare_id=?,osm_id=?" +
             " where site_id=?";
 
@@ -65,18 +65,20 @@ public class SiteUpdateStatementCreator implements PreparedStatementCreator {
         stat.setObject(c++, stalls.getV2(), Types.INTEGER);
         stat.setObject(c++, stalls.getV3(), Types.INTEGER);
         stat.setObject(c++, stalls.getV4(), Types.INTEGER);
+        stat.setObject(c++, stalls.getOther(), Types.INTEGER);
+        stat.setObject(c++, stalls.getAccessible(), Types.INTEGER);
         stat.setObject(c++, stalls.getTrailerFriendly(), Types.INTEGER);
 
         Plugs plugs = site.getPlugs();
         if (plugs == null) plugs = new Plugs();
         stat.setObject(c++, plugs.getTPC(), Types.INTEGER);
         stat.setObject(c++, plugs.getNACS(), Types.INTEGER);
-        stat.setObject(c++, plugs.getMagicDock(), Types.INTEGER);
-        stat.setObject(c++, plugs.getGBTChina(), Types.INTEGER);
-        stat.setObject(c++, plugs.getType2(), Types.INTEGER);
+        stat.setObject(c++, plugs.getCCS1(), Types.INTEGER);
         stat.setObject(c++, plugs.getCCS2(), Types.INTEGER);
-        stat.setObject(c++, plugs.getCCS2Type2(), Types.INTEGER);
-        stat.setObject(c++, plugs.getCCS2TPC(), Types.INTEGER);
+        stat.setObject(c++, plugs.getType2(), Types.INTEGER);
+        stat.setObject(c++, plugs.getGBT(), Types.INTEGER);
+        stat.setObject(c++, plugs.getOther(), Types.INTEGER);
+        stat.setObject(c++, plugs.getMulti(), Types.INTEGER);
 
         stat.setObject(c++, site.isPaidParking(), Types.BOOLEAN);
         stat.setString(c++, string(site.getFacilityName()));

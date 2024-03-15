@@ -1,33 +1,33 @@
 package com.redshiftsoft.tesla.web.mvc.site;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.redshiftsoft.tesla.dao.site.Plugs;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PlugsDTO {
 
     private Integer TPC;
     private Integer NACS;
-    private Integer MagicDock;
-    private Integer GBTChina;
-    private Integer Type2;
+    private Integer CCS1;
     private Integer CCS2;
-    private Integer CCS2Type2;
-    private Integer CCS2TPC;
+    private Integer Type2;
+    private Integer GBT;
+    private Integer Other;
+    private Integer Multi;
 
     public PlugsDTO nullIfEmpty() {
-        return TPC == null && NACS == null && MagicDock == null && GBTChina == null && Type2 == null && CCS2 == null && CCS2Type2 == null && CCS2TPC == null ? null : this;
+        return TPC == null && NACS == null && CCS1 == null && CCS2 == null && Type2 == null && GBT == null && Other == null && Multi == null ? null : this;
     }
 
     public int getTotal() {
         int total = 0;
         if (TPC != null) total += TPC;
         if (NACS != null) total += NACS;
-        if (MagicDock != null) total += MagicDock;
-        if (GBTChina != null) total += GBTChina;
-        if (Type2 != null) total += Type2;
+        if (CCS1 != null) total += CCS1;
         if (CCS2 != null) total += CCS2;
-        if (CCS2Type2 != null) total += CCS2Type2;
-        if (CCS2TPC != null) total += CCS2TPC;
+        if (Type2 != null) total += Type2;
+        if (GBT != null) total += GBT;
+        if (Other != null) total += Other;
         return total;
     }
 
@@ -45,25 +45,11 @@ public class PlugsDTO {
         this.NACS = NACS;
     }
     
-    public Integer getMagicDock() {
-        return MagicDock;
+    public Integer getCCS1() {
+        return CCS1;
     }
-    public void setMagicDock(Integer MagicDock) {
-        this.MagicDock = MagicDock;
-    }
-
-    public Integer getGBTChina() {
-        return GBTChina;
-    }
-    public void setGBTChina(Integer GBTChina) {
-        this.GBTChina = GBTChina;
-    }
-
-    public Integer getType2() {
-        return Type2;
-    }
-    public void setType2(Integer Type2) {
-        this.Type2 = Type2;
+    public void setCCS1(Integer CCS1) {
+        this.CCS1 = CCS1;
     }
 
     public Integer getCCS2() {
@@ -73,18 +59,32 @@ public class PlugsDTO {
         this.CCS2 = CCS2;
     }
 
-    public Integer getCCS2Type2() {
-        return CCS2Type2;
+    public Integer getType2() {
+        return Type2;
     }
-    public void setCCS2Type2(Integer CCS2Type2) {
-        this.CCS2Type2 = CCS2Type2;
+    public void setType2(Integer Type2) {
+        this.Type2 = Type2;
     }
 
-    public Integer getCCS2TPC() {
-        return CCS2TPC;
+    public Integer getGBT() {
+        return GBT;
     }
-    public void setCCS2TPC(Integer CCS2TPC) {
-        this.CCS2TPC = CCS2TPC;
+    public void setGBT(Integer GBT) {
+        this.GBT = GBT;
+    }
+
+    public Integer getOther() {
+        return Other;
+    }
+    public void setOther(Integer Other) {
+        this.Other = Other;
+    }
+
+    public Integer getMulti() {
+        return Multi;
+    }
+    public void setMulti(Integer Multi) {
+        this.Multi = Multi;
     }
 
 }

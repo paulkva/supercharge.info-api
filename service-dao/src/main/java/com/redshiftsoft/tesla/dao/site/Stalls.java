@@ -6,10 +6,12 @@ public class Stalls {
     private Integer v2;
     private Integer v3;
     private Integer v4;
+    private Integer other;
+    private Integer accessible;
     private Integer trailerFriendly;
 
     public Stalls nullIfEmpty() {
-        return urban == null && v2 == null && v3 == null && v4 == null && trailerFriendly == null ? null : this;
+        return urban == null && v2 == null && v3 == null && v4 == null && other == null && accessible == null && trailerFriendly == null ? null : this;
     }
 
     public Integer getUrban() {
@@ -38,6 +40,20 @@ public class Stalls {
     }
     public void setV4(Integer v4) {
         this.v4 = v4;
+    }
+
+    public Integer getOther() {
+        return other;
+    }
+    public void setOther(Integer other) {
+        this.other = other;
+    }
+
+    public Integer getAccessible() {
+        return accessible;
+    }
+    public void setAccessible(Integer accessible) {
+        this.accessible = accessible;
     }
 
     public Integer getTrailerFriendly() {

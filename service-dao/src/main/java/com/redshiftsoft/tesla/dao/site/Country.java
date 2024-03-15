@@ -17,12 +17,10 @@ public class Country {
 
     private boolean plugTPC;
     private boolean plugNACS;
-    private boolean plugMagicDock;
-    private boolean plugGBTChina;
-    private boolean plugType2;
+    private boolean plugCCS1;
     private boolean plugCCS2;
-    private boolean plugCCS2Type2;
-    private boolean plugCCS2TPC;
+    private boolean plugType2;
+    private boolean plugGBT;
 
     public Country() {
     }
@@ -127,25 +125,11 @@ public class Country {
         this.plugNACS = plugNACS;
     }
 
-    public boolean isPlugMagicDock() {
-        return plugMagicDock;
+    public boolean isPlugCCS1() {
+        return plugCCS1;
     }
-    public void setPlugMagicDock(boolean plugMagicDock) {
-        this.plugMagicDock = plugMagicDock;
-    }
-
-    public boolean isPlugGBTChina() {
-        return plugGBTChina;
-    }
-    public void setPlugGBTChina(boolean plugGBTChina) {
-        this.plugGBTChina = plugGBTChina;
-    }
-
-    public boolean isPlugType2() {
-        return plugType2;
-    }
-    public void setPlugType2(boolean plugType2) {
-        this.plugType2 = plugType2;
+    public void setPlugCCS1(boolean plugCCS1) {
+        this.plugCCS1 = plugCCS1;
     }
 
     public boolean isPlugCCS2() {
@@ -155,18 +139,18 @@ public class Country {
         this.plugCCS2 = plugCCS2;
     }
 
-    public boolean isPlugCCS2Type2() {
-        return plugCCS2Type2;
+    public boolean isPlugType2() {
+        return plugType2;
     }
-    public void setPlugCCS2Type2(boolean plugCCS2Type2) {
-        this.plugCCS2Type2 = plugCCS2Type2;
+    public void setPlugType2(boolean plugType2) {
+        this.plugType2 = plugType2;
     }
 
-    public boolean isPlugCCS2TPC() {
-        return plugCCS2TPC;
+    public boolean isPlugGBT() {
+        return plugGBT;
     }
-    public void setPlugCCS2TPC(boolean plugCCS2TPC) {
-        this.plugCCS2TPC = plugCCS2TPC;
+    public void setPlugGBT(boolean plugGBT) {
+        this.plugGBT = plugGBT;
     }
 
 }

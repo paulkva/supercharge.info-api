@@ -29,6 +29,8 @@ public class StallsDTOFunctions {
             stallsDTO.setV2(stalls.getV2());
             stallsDTO.setV3(stalls.getV3());
             stallsDTO.setV4(stalls.getV4());
+            stallsDTO.setOther(stalls.getOther());
+            stallsDTO.setAccessible(stalls.getAccessible());
             stallsDTO.setTrailerFriendly(stalls.getTrailerFriendly());
 
             return stallsDTO.nullIfEmpty();
@@ -47,6 +49,8 @@ public class StallsDTOFunctions {
             stalls.setV2(stallsDTO.getV2());
             stalls.setV3(stallsDTO.getV3());
             stalls.setV4(stallsDTO.getV4());
+            stalls.setOther(stallsDTO.getOther());
+            stalls.setAccessible(stallsDTO.getAccessible());
             stalls.setTrailerFriendly(stallsDTO.getTrailerFriendly());
 
             return stalls.nullIfEmpty();

@@ -47,14 +47,41 @@ public class Validations {
                         "GROUP BY name HAVING count(*) > 1")
         );
 
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - | STALLS
+
         validationMap.add(
-                new Validation(SUPERCHARGER, "individual stall and plug counts do not exceed total", "" +
+                new Validation(SUPERCHARGER, "total stall count not equal to sum of individual stall types", "" +
                         "SELECT * " +
                         "FROM site " +
-                        "WHERE COALESCE(stall_count, 0) < COALESCE(stalls_urban, 0) + COALESCE(stalls_v2, 0) + COALESCE(stalls_v3, 0) + COALESCE(stalls_v4, 0) " +
-                        "OR COALESCE(stall_count, 0) < COALESCE(plugs_tpc, 0) + COALESCE(plugs_nacs, 0) + COALESCE(plugs_magicdock, 0) + COALESCE(plugs_gbt_china, 0) + " +
-                        "COALESCE(plugs_type2, 0) + COALESCE(plugs_ccs2, 0) + COALESCE(plugs_ccs2_type2, 0) + COALESCE(plugs_ccs2_tpc, 0) " +
-                        "OR COALESCE(stall_count, 0) < COALESCE(stalls_trailer, 0)")
+                        "WHERE stall_count != COALESCE(stalls_urban, 0) + COALESCE(stalls_v2, 0) + COALESCE(stalls_v3, 0) + COALESCE(stalls_v4, 0) + COALESCE(stalls_other, 0)")
+        );
+
+        validationMap.add(
+                new Validation(SUPERCHARGER, "accessible and/or trailer-friendly stall counts exceed total", "" +
+                        "SELECT * " +
+                        "FROM site " +
+                        "WHERE COALESCE(stalls_accessible, 0) > stall_count" +
+                        "OR COALESCE(stalls_trailer, 0) > stall_count")
+        );
+
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - | PLUGS
+
+        validationMap.add(
+                new Validation(SUPERCHARGER, "total stall count not equal to sum of individual plug counts (with no multi-plug stalls)", "" +
+                        "SELECT * " +
+                        "FROM site " +
+                        "WHERE COALESCE(plugs_multi, 0) = 0 AND stall_count != " +
+                        "COALESCE(plugs_tpc, 0) + COALESCE(plugs_nacs, 0) + COALESCE(plugs_ccs1, 0) + COALESCE(plugs_ccs2, 0) + " +
+                        "COALESCE(plugs_type2, 0) + COALESCE(plugs_gbt, 0) + COALESCE(plugs_other, 0)")
+        );
+
+        validationMap.add(
+                new Validation(SUPERCHARGER, "total stall count more than expected (with multi-plug stalls)", "" +
+                        "SELECT * " +
+                        "FROM site " +
+                        "WHERE COALESCE(plugs_multi, 0) > 0 AND stall_count > " +
+                        "COALESCE(plugs_tpc, 0) + COALESCE(plugs_nacs, 0) + COALESCE(plugs_ccs1, 0) + COALESCE(plugs_ccs2, 0) + " +
+                        "COALESCE(plugs_type2, 0) + COALESCE(plugs_gbt, 0) + COALESCE(plugs_other, 0) - plugs_multi")
         );
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - | ADDRESS

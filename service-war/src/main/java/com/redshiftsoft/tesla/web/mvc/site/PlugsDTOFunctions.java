@@ -27,12 +27,12 @@ public class PlugsDTOFunctions {
 
             plugsDTO.setTPC(plugs.getTPC());
             plugsDTO.setNACS(plugs.getNACS());
-            plugsDTO.setMagicDock(plugs.getMagicDock());
-            plugsDTO.setGBTChina(plugs.getGBTChina());
-            plugsDTO.setType2(plugs.getType2());
+            plugsDTO.setCCS1(plugs.getCCS1());
             plugsDTO.setCCS2(plugs.getCCS2());
-            plugsDTO.setCCS2Type2(plugs.getCCS2Type2());
-            plugsDTO.setCCS2TPC(plugs.getCCS2TPC());
+            plugsDTO.setType2(plugs.getType2());
+            plugsDTO.setGBT(plugs.getGBT());
+            plugsDTO.setOther(plugs.getOther());
+            plugsDTO.setMulti(plugs.getMulti());
 
             return plugsDTO.nullIfEmpty();
         }
@@ -48,12 +48,12 @@ public class PlugsDTOFunctions {
 
             plugs.setTPC(plugsDTO.getTPC());
             plugs.setNACS(plugsDTO.getNACS());
-            plugs.setMagicDock(plugsDTO.getMagicDock());
-            plugs.setGBTChina(plugsDTO.getGBTChina());
-            plugs.setType2(plugsDTO.getType2());
+            plugs.setCCS1(plugsDTO.getCCS1());
             plugs.setCCS2(plugsDTO.getCCS2());
-            plugs.setCCS2Type2(plugsDTO.getCCS2Type2());
-            plugs.setCCS2TPC(plugsDTO.getCCS2TPC());
+            plugs.setType2(plugsDTO.getType2());
+            plugs.setGBT(plugsDTO.getGBT());
+            plugs.setOther(plugsDTO.getOther());
+            plugs.setMulti(plugsDTO.getMulti());
 
             return plugs.nullIfEmpty();
         }

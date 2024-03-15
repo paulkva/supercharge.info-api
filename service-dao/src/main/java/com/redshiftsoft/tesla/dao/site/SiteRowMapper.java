@@ -58,18 +58,20 @@ public class SiteRowMapper implements RowMapper<Site> {
         stalls.setV2(rs.getObject(c++, Integer.class));
         stalls.setV3(rs.getObject(c++, Integer.class));
         stalls.setV4(rs.getObject(c++, Integer.class));
+        stalls.setOther(rs.getObject(c++, Integer.class));
+        stalls.setAccessible(rs.getObject(c++, Integer.class));
         stalls.setTrailerFriendly(rs.getObject(c++, Integer.class));
         site.setStalls(stalls.nullIfEmpty());
 
         Plugs plugs = new Plugs();
         plugs.setTPC(rs.getObject(c++, Integer.class));
         plugs.setNACS(rs.getObject(c++, Integer.class));
-        plugs.setMagicDock(rs.getObject(c++, Integer.class));
-        plugs.setGBTChina(rs.getObject(c++, Integer.class));
-        plugs.setType2(rs.getObject(c++, Integer.class));
+        plugs.setCCS1(rs.getObject(c++, Integer.class));
         plugs.setCCS2(rs.getObject(c++, Integer.class));
-        plugs.setCCS2Type2(rs.getObject(c++, Integer.class));
-        plugs.setCCS2TPC(rs.getObject(c++, Integer.class));
+        plugs.setType2(rs.getObject(c++, Integer.class));
+        plugs.setGBT(rs.getObject(c++, Integer.class));
+        plugs.setOther(rs.getObject(c++, Integer.class));
+        plugs.setMulti(rs.getObject(c++, Integer.class));
         site.setPlugs(plugs.nullIfEmpty());
 
         site.setPaidParking(rs.getObject(c++, Boolean.class));
