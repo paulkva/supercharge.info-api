@@ -18,7 +18,7 @@ public class SiteUpdateStatementCreator implements PreparedStatementCreator {
             "has_solar_canopy=?,has_battery=?,developer_notes=?,modified_date=now(),version=version+1,other_evs=?," +
             "stalls_urban=?,stalls_v2=?,stalls_v3=?,stalls_v4=?,stalls_other=?,stalls_accessible=?,stalls_trailer=?," +
             "plugs_tpc=?,plugs_nacs=?,plugs_ccs1=?,plugs_ccs2=?,plugs_type2=?,plugs_gbt=?,plugs_other=?,plugs_multi=?," +
-            "paid_parking=?,facility_name=?,facility_hours=?,access_notes=?,address_notes=?,plugshare_id=?,osm_id=?" +
+            "parking_id=?,facility_name=?,facility_hours=?,access_notes=?,address_notes=?,plugshare_id=?,osm_id=?" +
             " where site_id=?";
 
     private final Site site;
@@ -80,7 +80,7 @@ public class SiteUpdateStatementCreator implements PreparedStatementCreator {
         stat.setObject(c++, plugs.getOther(), Types.INTEGER);
         stat.setObject(c++, plugs.getMulti(), Types.INTEGER);
 
-        stat.setObject(c++, site.isPaidParking(), Types.BOOLEAN);
+        stat.setObject(c++, site.getParkingId(), Types.INTEGER);
         stat.setString(c++, string(site.getFacilityName()));
         stat.setString(c++, string(site.getFacilityHours()));
         stat.setString(c++, string(site.getAccessNotes()));

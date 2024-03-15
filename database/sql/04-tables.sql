@@ -82,6 +82,16 @@ create table address
 alter sequence address_address_id_seq restart with 2000000;
 
 -- -----------------------------------------------------------
+-- PARKING - lookup table
+-- -----------------------------------------------------------
+create table parking
+(
+    parking_id    serial primary key,
+    name          varchar(100) not null,
+    description   text null
+);
+
+-- -----------------------------------------------------------
 -- SITE
 -- -----------------------------------------------------------
 create type site_status_type as enum ('CLOSED_PERM','CLOSED_TEMP', 'PERMIT', 'CONSTRUCTION', 'OPEN', 'VOTING', 'PLAN', 'EXPANDING');
@@ -124,7 +134,7 @@ create table site
     plugs_gbt         int4                           null,
     plugs_other       int4                           null,
     plugs_multi       int4                           null,
-    paid_parking      bool                           null,
+    parking_id        int4                           null,
     facility_name     varchar(200)                   null     default null::character varying,
     facility_hours    varchar(100)                   null     default null::character varying,
     access_notes      varchar(1000)                  null     default null::character varying,
@@ -137,6 +147,8 @@ create table site
 );
 alter table site
     add constraint site_address_id_fkey foreign key (address_id) references address(address_id) on delete cascade on update cascade;
+alter table site
+    add constraint site_parking_id_fkey foreign key (parking_id) references parking(parking_id) on delete cascade on update cascade;
 alter sequence site_site_id_seq restart with 100000;
 
 -- -----------------------------------------------------------

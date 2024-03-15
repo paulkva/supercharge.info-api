@@ -51,7 +51,7 @@ public class SiteEditDTO {
     private StallsDTO stalls = new StallsDTO();
     private PlugsDTO plugs = new PlugsDTO();
 
-    private Boolean paidParking;
+    private Integer parkingId;
     private String facilityName, facilityHours, accessNotes, addressNotes;
     private Long plugshareId, osmId;
 
@@ -271,11 +271,11 @@ public class SiteEditDTO {
         this.plugs = plugs;
     }
 
-    public Boolean isPaidParking() {
-        return paidParking;
+    public Integer getParkingId() {
+        return parkingId;
     }
-    public void setPaidParking(Boolean paidParking) {
-        this.paidParking = paidParking;
+    public void setParkingId(Integer parkingId) {
+        this.parkingId = parkingId;
     }
 
     public String getFacilityName() {

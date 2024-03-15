@@ -77,7 +77,7 @@ public class SiteInsertStatementCreator implements PreparedStatementCreator {
         stat.setObject(c++, plugs.getOther(), Types.INTEGER);
         stat.setObject(c++, plugs.getMulti(), Types.INTEGER);
 
-        stat.setObject(c++, site.isPaidParking(), Types.BOOLEAN);
+        stat.setObject(c++, site.getParkingId(), Types.INTEGER);
         stat.setString(c++, string(site.getFacilityName()));
         stat.setString(c++, string(site.getFacilityHours()));
         stat.setString(c++, string(site.getAccessNotes()));

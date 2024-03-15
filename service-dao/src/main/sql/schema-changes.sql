@@ -5,6 +5,13 @@ alter type site_status_type add value 'VOTING';
 alter type site_status_type add value 'PLAN';
 alter type site_status_type add value 'EXPANDING';
 
+create table parking
+(
+    parking_id    serial primary key,
+    name          varchar(100) not null,
+    description   text null
+);
+
 alter table site 
     add column stalls_urban      int4                           null,
     add column stalls_v2         int4                           null,
@@ -21,13 +28,16 @@ alter table site
     add column plugs_gbt         int4                           null,
     add column plugs_other       int4                           null,
     add column plugs_multi       int4                           null,
-    add column paid_parking      bool                           null,
+    add column parking_id        int4                           null,
     add column facility_name     varchar(200)                   null     default null::character varying,
     add column facility_hours    varchar(100)                   null     default null::character varying,
     add column access_notes      varchar(1000)                  null     default null::character varying,
     add column address_notes     varchar(1000)                  null     default null::character varying,
     add column plugshare_id      int8                           null,
     add column osm_id            int8                           null;
+
+alter table site
+    add constraint site_parking_id_fkey foreign key (parking_id) references parking(parking_id) on delete cascade on update cascade;
 
 alter table country
     add column plugs_tpc        boolean      not null default true,
@@ -78,8 +88,8 @@ FROM address a, country c
 WHERE s.address_id = a.address_id AND a.country_id = c.country_id
 AND ((s.power_kwatt < 200 AND c.region_id = 100) OR c.name IN ('Japan', 'South Korea')) AND NOT s.other_evs;
 
--- North America + South Korea stalls that are already marked open to other EVs are all MagicDock (TPC+CCS1)
-UPDATE site s SET plugs_tpc = s.stall_count, plugs_ccs1 = s.stall_count, plugs_multi = s.stall_count
+-- North America + South Korea stalls that are already marked open to other EVs are all MagicDock (NACS+CCS1)
+UPDATE site s SET plugs_nacs = s.stall_count, plugs_ccs1 = s.stall_count, plugs_multi = s.stall_count
 FROM address a, country c
 WHERE s.address_id = a.address_id AND a.country_id = c.country_id
 AND (c.region_id = 100 OR c.name = 'South Korea') AND s.other_evs;

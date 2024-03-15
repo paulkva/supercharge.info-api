@@ -77,7 +77,7 @@ public class SiteDiffLogger {
         diff(builder, "plugsOther", oldPlugs.getOther(), newPlugs.getOther());
         diff(builder, "plugsMulti", oldPlugs.getMulti(), newPlugs.getMulti());
 
-        diff(builder, "paidParking", oldSite.isPaidParking(), newSite.isPaidParking());
+        diff(builder, "parkingId", oldSite.getParkingId(), newSite.getParkingId());
         diff(builder, "facilityName", oldSite.getFacilityName(), newSite.getFacilityName());
         diff(builder, "facilityHours", oldSite.getFacilityHours(), newSite.getFacilityHours());
         diff(builder, "accessNotes", oldSite.getAccessNotes(), newSite.getAccessNotes());

@@ -35,7 +35,7 @@ public class Site {
 
     private Stalls stalls = new Stalls();
     private Plugs plugs = new Plugs();
-    private Boolean paidParking;
+    private Integer parkingId;
     private String facilityName;
     private String facilityHours;
     private String accessNotes;
@@ -251,11 +251,11 @@ public class Site {
         this.plugs = plugs;
     }
 
-    public Boolean isPaidParking() {
-        return paidParking;
+    public Integer getParkingId() {
+        return parkingId;
     }
-    public void setPaidParking(Boolean paidParking) {
-        this.paidParking = paidParking;
+    public void setParkingId(Integer parkingId) {
+        this.parkingId = parkingId;
     }
 
     public String getFacilityName() {

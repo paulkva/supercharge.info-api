@@ -46,13 +46,6 @@ public class ChangeLog implements Comparable<ChangeLog> {
     private int powerKilowatt;
     private boolean otherEVs;
 
-    private Stalls stalls;
-    private Plugs plugs;
-
-    private Boolean paidParking;
-    private String facilityName, facilityHours, accessNotes, addressNotes;
-    private Long plugshareId, osmId;
-
     public int getId() {
         return id;
     }

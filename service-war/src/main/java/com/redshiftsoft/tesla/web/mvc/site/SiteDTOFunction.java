@@ -30,7 +30,7 @@ public class SiteDTOFunction implements Function<Site, SiteDTO> {
         siteDTO.setOtherEVs(site.isOtherEVs());
         siteDTO.setStalls(StallsDTOFunctions.transform(site.getStalls()));
         siteDTO.setPlugs(PlugsDTOFunctions.transform(site.getPlugs()));
-        siteDTO.setPaidParking(site.isPaidParking());
+        siteDTO.setParkingId(site.getParkingId());
         siteDTO.setFacilityName(site.getFacilityName());
         siteDTO.setFacilityHours(site.getFacilityHours());
         siteDTO.setAccessNotes(site.getAccessNotes());

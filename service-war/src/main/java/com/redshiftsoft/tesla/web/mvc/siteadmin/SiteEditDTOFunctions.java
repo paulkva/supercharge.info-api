@@ -62,7 +62,7 @@ public final class SiteEditDTOFunctions {
             siteDTO.setOtherEVs(site.isOtherEVs());
             siteDTO.setStalls(StallsDTOFunctions.transform(site.getStalls()));
             siteDTO.setPlugs(PlugsDTOFunctions.transform(site.getPlugs()));
-            siteDTO.setPaidParking(site.isPaidParking());
+            siteDTO.setParkingId(site.getParkingId());
             siteDTO.setFacilityName(site.getFacilityName());
             siteDTO.setFacilityHours(site.getFacilityHours());
             siteDTO.setAccessNotes(site.getAccessNotes());
@@ -104,7 +104,7 @@ public final class SiteEditDTOFunctions {
             site.setOtherEVs(siteDTO.isOtherEVs());
             site.setStalls(StallsDTOFunctions.transform(siteDTO.getStalls()));
             site.setPlugs(PlugsDTOFunctions.transform(siteDTO.getPlugs()));
-            site.setPaidParking(siteDTO.isPaidParking());
+            site.setParkingId(siteDTO.getParkingId());
             site.setFacilityName(siteDTO.getFacilityName());
             site.setFacilityHours(siteDTO.getFacilityHours());
             site.setAccessNotes(siteDTO.getAccessNotes());
